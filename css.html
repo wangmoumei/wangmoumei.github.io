@@ -1,0 +1,290 @@
+﻿<style>*{padding:0;margin: 0;font-size: 20px}body{padding:40px;}div,p{margin:10px auto}</style>
+<pre>1. css 雪碧（CSS Sprite）
+
+   雪碧图 与 background-position
+</pre>
+<br/></br>
+<pre>
+2. css animation
+  @-webkit-keyframes water {
+    0% { left:0px}
+    50% { left:100px}
+    100% { left:0px }
+  }
+  @-moz-keyframes water {
+    0% { left:0px}
+    50% { left:100px}
+    100% { left:0px }
+  }
+  @keyframes water{
+    0% { left:0px}
+    50% { left:100px}
+    100% { left:0px }
+  }
+  p,.ani{
+    -webkit-animation: 4s water linear infinite;
+    -moz-animation: 4s water linear infinite;
+    animation: 4s water linear infinite;
+  }
+  
+  animation:动画名称 持续时间 过渡类型 延迟的时间 循环次数 
+</pre>
+<p style="width:100px;height:100px;background:#f00;color:#fff;text-align:center;line-height:100px;"> p </p>
+  <div id="box" style="width:100px;height:100px;background:#f00;color:#fff;text-align:center;line-height:100px;"> div click! </div>
+    <script>document.getElementById("box").onclick=function(){this.className="ani"};</script>
+  <style>
+    @-webkit-keyframes test {
+    0% { width:0px}
+    50% { width:100px}
+    100% { width:0px }
+  }
+  @-moz-keyframes test {
+    0% { width:0px}
+    50% { width:100px}
+    100% { width:0px }
+  }
+  @keyframes test{
+    0% { width:0px}
+    50% { width:100px}
+    100% { width:0px }
+  }
+  p,.ani{
+    -webkit-animation: 4s test linear infinite 2s;
+    -moz-animation: 4s test linear infinite 2s;
+    animation: 4s test linear infinite 2s;
+  }
+  </style>
+  <a href="http://m.isux.us/qz-act/vip/20140903-qzonev5/m-index.html">应用场景1</a>
+    <a href="http://qzs.qq.com/qzone/qzact/act/qzapp/qzone5.0/mobile/index.html">应用场景2</a>
+    
+    <a href="http://isux.tencent.com/play-with-html5-animate.html">详细...</a>
+  <pre>
+3. css transition
+  a{
+    background-color:#56eed9;
+    transition:background-color .5s ease-in;
+  }
+  a:hover{
+    background-color:#199482;
+    transition:background-color 2s ease-in;
+  }
+  </pre>
+  <a style="display:block;padding:10px;">css transition</a>
+  <a class="on" style="display:block;padding:10px;">css transition</a>
+    <style>
+      a{
+        color: #fff;
+      background-color:#56eed9;
+      }
+      a:hover{
+        background-color:#199482;
+      }
+      a.on{
+        transition:background-color .3s ease-in;
+      }
+      a.on:hover{
+        transition:background-color 1s ease-in;
+      }
+    </style>
+    <pre>
+4. css Transform 变换
+      旋转
+      div#box1{
+        transform:rotate(.5turn)
+      }
+    </pre>
+    <div id="box1" style="width:100px;height:100px;background:#f00;">
+      <script>document.getElementById("box1").onclick=function(){this.className="ani1"};</script>
+     <style>
+       div#box1{
+        transform: skew(45deg);
+      }
+      @-webkit-keyframes test {
+        0% { transform: rotate(0turn);}
+        100% { transform: rotate(1turn); }
+      }
+      @-moz-keyframes test {
+        0% { transform: rotate(0turn);}
+        100% { transform: rotate(1turn); }
+      }
+      @keyframes test{
+        0% { transform: rotate(0turn);}
+        100% { transform: rotate(1turn); }
+      }
+      .ani1{
+        -webkit-animation: 4s test ease infinite;
+        -moz-animation: 4s test ease infinite;
+        animation: 4s test ease infinite;
+      }
+     </style>
+      
+    </div>
+<pre>5. css before/after</pre>
+<i>aaabbbccc</i>
+<style>i::before{content: "11";color:#56eed9}i:after{content: "22";font-size:20px;}</style>
+<br/></br>
+<pre>6. css font icon
+  <a href="http://fontello.com/">fontello</a>
+</pre>
+<br/></br>
+<pre>7. css flex与box
+  flex 新 12年
+  box 旧 09年
+  ul{
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    display: -webkit-flex;
+    
+    box-align:center ;
+    -webkit-box-align:center;
+    -moz-box-align:center;
+    -ms-box-align:center;
+    align-items:center ;
+    -webkit-align-items:center;
+    
+    box-orient:horizontal | vertical;
+    flex-direction:row | column;
+    
+    box-orient:vertical;
+    -webkit-box-orient:vertical;
+    -moz-box-orient:vertical;
+    -ms-box-orient:vertical;
+    flex-direction:column;
+    -webkit-flex-direction:column;
+  }
+  ul li{
+    box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;
+    flex:1;-webkit-flex:1;
+  }
+</pre>
+<ul class="ul">
+  <li>menu1</li>
+  <li>menu2</li>
+  <li>menu3</li>
+</ul>
+<style>
+  ul.ul{
+    background:#f00;  
+    overflow: hidden;
+  }
+  ul.ul li{
+    float: left;
+    width: 300px;
+  }
+  ul.ul li:nth-of-type(1){
+    background: #56eed9
+  }
+  ul.ul li:nth-of-type(2){
+    background:#1fbba6
+  }
+  ul.ul li:nth-of-type(3){
+    background: #199482
+  }
+</style>
+<br/><br/>
+<ul class="ul0">
+  <li>menu1</li>
+  <li>menu2</li>
+  <li>menu3</li>
+</ul>
+<style>
+  ul.ul0{
+    background:#f00;  
+    overflow: hidden;
+  }
+  ul.ul0 li{
+    float: left;
+    width: 33%;
+  }
+  ul.ul0 li:nth-of-type(1){
+    background: #56eed9
+  }
+  ul.ul0 li:nth-of-type(2){
+    background:#1fbba6
+  }
+  ul.ul0 li:nth-of-type(3){
+    background: #199482
+  }
+</style>
+<br/></br>
+<ul class="ul1">
+  <li>1</li>
+  <li>22</li>
+  <li>333</li>
+</ul>
+<style>
+  li{list-style: none;color: #fff;text-align:center;}
+  ul.ul1{
+    display:box;display:-moz-box;display:-webkit-box;display:-ms-box;
+    display:flex;display:-webkit-flex;
+    
+/*    box-orient:horizontal;
+    flex-direction:row;*/
+/*    box-align:start ;
+    align-items:flex-start ;*/
+  }
+  ul.ul1 li:nth-of-type(1){
+    box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;
+    flex:1;
+    height: 11px;
+    font-size: 12px;
+    background: #56eed9
+  }
+  ul.ul1 li:nth-of-type(2){
+    box-flex:2;-webkit-box-flex:2;-moz-box-flex:2;-ms-box-flex:2;
+    flex:2;
+    height: 22px;
+    background: #28cbb6
+  }
+  ul.ul1 li:nth-of-type(3){
+    box-flex:3;-webkit-box-flex:3;-moz-box-flex:3;-ms-box-flex:3;
+    flex:3;
+    height: 33px;
+    background: #1fbba6
+  }
+</style>
+<br/>
+<ul class="ul2">
+  <li>1</li>
+  <li>22</li>
+  <li>33</li>
+</ul>
+<style>
+    ul.ul2{
+    
+    display:box;display:-moz-box;display:-webkit-box;display:-ms-box;
+    display:flex;display:-webkit-flex;
+    
+    box-orient:vertical ;
+    flex-direction:column ;
+    
+    height:200px;
+    
+/*    box-align:start ;
+    align-items:flex-start ;*/
+  }
+  ul.ul2 li:nth-of-type(1){
+    box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;
+    flex:1;
+    width: 11px;
+    font-size: 12px;
+    background: #56eed9
+  }
+  ul.ul2 li:nth-of-type(2){
+    box-flex:2;-webkit-box-flex:2;-moz-box-flex:2;-ms-box-flex:2;
+    flex:2;
+    width: 22px;
+    background: #28cbb6
+  }
+  ul.ul2 li:nth-of-type(3){
+    box-flex:3;-webkit-box-flex:3;-moz-box-flex:3;-ms-box-flex:3;
+    flex:3;
+    width: 33px;
+    background: #1fbba6
+  }
+</style>
+<pre>
+8 css 渐变色
+</pre>
+<a href="http://www.colorzilla.com/gradient-editor/">http://www.colorzilla.com/gradient-editor/</a>
