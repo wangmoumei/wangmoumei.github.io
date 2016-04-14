@@ -133,8 +133,12 @@
   ul{
     display: box;
     display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
     display: flex;
     display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
     
     box-align:center ;
     -webkit-box-align:center;
@@ -146,12 +150,19 @@
     box-orient:horizontal | vertical;
     flex-direction:row | column;
     
+    
+    
     box-orient:vertical;
     -webkit-box-orient:vertical;
     -moz-box-orient:vertical;
     -ms-box-orient:vertical;
     flex-direction:column;
     -webkit-flex-direction:column;
+    
+    box-align:start | center ;
+    align-items:flex-start center;
+    
+    
   }
   ul li{
     box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;
@@ -217,7 +228,7 @@
   li{list-style: none;color: #fff;text-align:center;}
   ul.ul1{
     display:box;display:-moz-box;display:-webkit-box;display:-ms-box;
-    display:flex;display:-webkit-flex;
+    display:flex;display:-moz-flex;display:-webkit-flex;display:-ms-flex;
     
 /*    box-orient:horizontal;
     flex-direction:row;*/
