@@ -142,6 +142,9 @@
     display: -moz-flex;
     display: -ms-flex;
     
+    box-align:start | center | end;
+    align-items:flex-start | center | flex-end;
+    
     box-align:center ;
     -webkit-box-align:center;
     -moz-box-align:center;
@@ -152,8 +155,6 @@
     box-orient:horizontal | vertical;
     flex-direction:row | column;
     
-    
-    
     box-orient:vertical;
     -webkit-box-orient:vertical;
     -moz-box-orient:vertical;
@@ -161,8 +162,6 @@
     flex-direction:column;
     -webkit-flex-direction:column;
     
-    box-align:start | center ;
-    align-items:flex-start center;
     
     
   }
@@ -185,13 +184,13 @@
     float: left;
     width: 300px;
   }
-  ul.ul li:nth-of-type(1){
+  ul li:nth-of-type(1){
     background: #56eed9
   }
-  ul.ul li:nth-of-type(2){
+  ul li:nth-of-type(2){
     background:#1fbba6
   }
-  ul.ul li:nth-of-type(3){
+  ul li:nth-of-type(3){
     background: #199482
   }
 </style>
@@ -208,17 +207,9 @@
   }
   ul.ul0 li{
     float: left;
-    width: 33%;
+    width: 33.33%;
   }
-  ul.ul0 li:nth-of-type(1){
-    background: #56eed9
-  }
-  ul.ul0 li:nth-of-type(2){
-    background:#1fbba6
-  }
-  ul.ul0 li:nth-of-type(3){
-    background: #199482
-  }
+  
 </style>
 <br/></br>
 <ul class="ul1">
@@ -226,35 +217,80 @@
   <li>22</li>
   <li>333</li>
 </ul>
+<ul class="ul1 center">
+  <li>1</li>
+  <li>22</li>
+  <li>333</li>
+</ul>
+<ul class="ul1 end">
+  <li>1</li>
+  <li>22</li>
+  <li>333</li>
+</ul>
+<!--<ul class="ul1 baseline">
+  <li>1</li>
+  <li>22</li>
+  <li>333</li>
+</ul>
+<ul class="ul1 strecth">
+  <li>1</li>
+  <li>22</li>
+  <li>333</li>
+</ul>-->
 <style>
   li{list-style: none;color: #fff;text-align:center;}
   ul.ul1{
     display:box;display:-moz-box;display:-webkit-box;display:-ms-box;
     display:flex;display:-moz-flex;display:-webkit-flex;display:-ms-flex;
-    
+    margin:10px 0;
 /*    box-orient:horizontal;
     flex-direction:row;*/
 /*    box-align:start ;
     align-items:flex-start ;*/
   }
+  ul.center{
+	box-align:center;
+	-webkit-box-align:center;-moz-box-align:center;-ms-box-align:center;
+	
+	-webkit-align-items:center;
+    align-items:center ;
+  }
+  ul.end{
+	box-align:end;
+	-webkit-box-align:end;-moz-box-align:end;-ms-box-align:end;
+	
+	-webkit-align-items:flex-end;
+    align-items:flex-end ;
+  }
+  ul.baseline{
+	  box-align:baseline;
+	  -webkit-box-align:baseline;-moz-box-align:baseline;-ms-box-align:baseline;
+	  
+	  -webkit-align-items:baseline;
+	  align-items:baseline;
+  }
+  ul.strecth{
+	  box-align:strecth;
+	  -webkit-box-align:strecth;-moz-box-align:strecth;-ms-box-align:strecth;
+	  
+	  -webkit-align-items:strecth;
+	  align-items:strecth;
+  }
   ul.ul1 li:nth-of-type(1){
     box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;
     flex:1;-webkit-flex:1;-moz-flex:1;-ms-flex:1;
-    height: 11px;
+    height: 12px;
     font-size: 12px;
-    background: #56eed9
   }
   ul.ul1 li:nth-of-type(2){
     box-flex:2;-webkit-box-flex:2;-moz-box-flex:2;-ms-box-flex:2;
     flex:2;
-    height: 22px;
-    background: #28cbb6
+    height: 32px;
   }
   ul.ul1 li:nth-of-type(3){
     box-flex:3;-webkit-box-flex:3;-moz-box-flex:3;-ms-box-flex:3;
     flex:3;
-    height: 33px;
-    background: #1fbba6
+    height: 53px;
   }
 </style>
 <br/>
@@ -263,6 +299,26 @@
   <li>22</li>
   <li>33</li>
 </ul>
+<ul class="ul2 center">
+  <li>1</li>
+  <li>22</li>
+  <li>33</li>
+</ul>
+<ul class="ul2 end">
+  <li>1</li>
+  <li>22</li>
+  <li>33</li>
+</ul>
+<!--<ul class="ul2 baseline">
+  <li>1</li>
+  <li>22</li>
+  <li>33</li>
+</ul>
+<ul class="ul2 strecth">
+  <li>1</li>
+  <li>22</li>
+  <li>33</li>
+</ul>-->
 <style>
     ul.ul2{
     
@@ -282,19 +338,16 @@
     flex:1;
     width: 11px;
     font-size: 12px;
-    background: #56eed9
   }
   ul.ul2 li:nth-of-type(2){
     box-flex:2;-webkit-box-flex:2;-moz-box-flex:2;-ms-box-flex:2;
     flex:2;
     width: 22px;
-    background: #28cbb6
   }
   ul.ul2 li:nth-of-type(3){
     box-flex:3;-webkit-box-flex:3;-moz-box-flex:3;-ms-box-flex:3;
     flex:3;
     width: 33px;
-    background: #1fbba6
   }
 </style>
 <pre>
