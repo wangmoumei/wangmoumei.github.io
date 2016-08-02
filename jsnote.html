@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <title>HTML/CSS/JS笔记</title>
 <style>
+*{padding:0;margin:0}
 pre{
 	font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;	
 	display: block;
     white-space: pre;
 	font-size:14px;
-    margin: 1em 0px;
+    margin: 1em;
 	background:#eee;
 	padding:2em;
 }
@@ -19,61 +20,33 @@ pre{
 </head>
 
 <body style="padding:0;margin:0;">
-<table class="tt" cellpadding="0" cellspacing="0">
-	<tr>
-    	<td style="background:#1bbc9d">#1bbc9d</td>
-        <td style="background:#2fcc71">#2fcc71</td>
-        <td style="background:#3598dc">#3598dc</td>
-        <td style="background:#9c59b8">#9c59b8</td>
-        <td style="background:#34495e">#34495e</td>
-        <td style="background:#f1c40f">#f1c40f</td>
-        <td style="background:#e77e23">#e77e23</td>
-        <td style="background:#e84c3d">#e84c3d</td>
-        <td style="background:#ecf0f1">#ecf0f1</td>
-        <td style="background:#96a6a6">#96a6a6</td>
-    </tr>
-    <tr>
-    	<td style="background:#16a086">#16a086</td>
-        <td style="background:#27ae61">#27ae61</td>
-        <td style="background:#2a80b9">#2a80b9</td>
-        <td style="background:#8f44ad">#8f44ad</td>
-        <td style="background:#2d3e50">#2d3e50</td>
-        <td style="background:#f49c14">#f49c14</td>
-        <td style="background:#d55401">#d55401</td>
-        <td style="background:#c1392b">#c1392b</td>
-        <td style="background:#bec3c7">#bec3c7</td>
-        <td style="background:#808b8d">#808b8d</td>
-    </tr>
-</table>
-<table class="tt" cellpadding="0" cellspacing="0">
-    <tr>
-    	<td style="background:#56eed9">#56eed9</td>
-        <td style="background:#74f1e1">#74f1e1</td>
-        <td style="background:#56eed9">#56eed9</td>
-        <td style="background:#3addc8">#3addc8</td>
-        <td style="background:#28cbb6">#28cbb6</td>
-        <td style="background:#1fbba6">#1fbba6</td>
-        <td style="background:#199482">#199482</td>
-    </tr>
-    <tr>
-    	<td style="background:#54d5eb">#54d5eb</td>
-    	<td style="background:#f9aa33">#f9aa33</td>
-        <td style="background:#f75455">#f75455</td>
-    </tr>
-</table>
+
 <pre>
 white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 
-meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<span><</span>meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"<span>></span>
+
 toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。
 style | currentStyle | runtimeStyle
-getElementsByTagName
-Var ev = ev || window.event
+
+getElementsByTagName(*)
+
+if(window.addEventListener){
+    document.getElementById("xxx").addEventListener("click",function(event){
+        event = event || window.event; //chrome firefox
+        var element = event.srcElement||event.target;
+    },false) /* false时为冒泡获取(由里向外)，true为capture方式(由外向里) */
+}else if(window.attachEvent){
+	document.getElementById("xxx").attachEvent("click",function(event){
+        event = event || window.event; //IE
+        var element = event.srcElement||event.target;
+    })
+}
+
 document.documentElement.clientWidth || document.body.clientWidth
-Var target = ev.srcElement||ev.target
+
 offsetHeight offsetLeft
 parseInt,parseFloat
-
 split() join() 前者是切割成数组的形式，后者是将数组转换成字符串
 
 数组方法 Push()尾部添加 pop()尾部删除Unshift()头部添加 shift()头部删除
@@ -156,43 +129,86 @@ html.addEventListener("animationend",end);
 css3的过渡属性transition，在动画结束时，也存在结束的事件：webkitTransitionEnd;
 
 new MyAjax("/home/test", null, function (data) {
-        var json = JSON.parse(data);
-        if (json.success) alert(json.msg);
-    });
-    function MyAjax(url,data,callBack) {
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function (even) {
-            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-                callBack(xhr.responseText);
-            } else
-                alert("Request was unsuccessful");
-        }
-        xhr.open("post", url , false);
-        xhr.send(data);
+    var json = JSON.parse(data);
+    if (json.success) alert(json.msg);
+});
+function MyAjax(url,data,callBack) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function (even) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+            callBack(xhr.responseText);
+        } else
+            alert("Request was unsuccessful");
     }
-    日期格式化 new Date().Format("yyyy-MM-dd hh:mm:ss");
-    Date.prototype.Format = function (format) {
-            var o = {
-                "M+": this.getMonth() + 1, //month 
-                "d+": this.getDate(), //day 
-                "h+": this.getHours(), //hour 
-                "m+": this.getMinutes(), //minute 
-                "s+": this.getSeconds(), //second 
-                "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
-                "S": this.getMilliseconds() //millisecond 
-            }
+    xhr.open("post", url , false);
+    xhr.send(data);
+}
 
-            if (/(y+)/.test(format)) {
-                format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-            }
+日期格式化 new Date().Format("yyyy-MM-dd hh:mm:ss");
+Date.prototype.Format = function (format) {
+    var o = {
+        "M+": this.getMonth() + 1, //month 
+        "d+": this.getDate(), //day 
+        "h+": this.getHours(), //hour 
+        "m+": this.getMinutes(), //minute 
+        "s+": this.getSeconds(), //second 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
+        "S": this.getMilliseconds() //millisecond 
+    }
 
-            for (var k in o) {
-                if (new RegExp("(" + k + ")").test(format)) {
-                    format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-                }
-            }
-            return format;
+    if (/(y+)/.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
         }
+    }
+    return format;
+}
 </pre>
+<table class="tt" cellpadding="0" cellspacing="0">
+	<tr>
+    	<td style="background:#1bbc9d">#1bbc9d</td>
+        <td style="background:#2fcc71">#2fcc71</td>
+        <td style="background:#3598dc">#3598dc</td>
+        <td style="background:#9c59b8">#9c59b8</td>
+        <td style="background:#34495e">#34495e</td>
+        <td style="background:#f1c40f">#f1c40f</td>
+        <td style="background:#e77e23">#e77e23</td>
+        <td style="background:#e84c3d">#e84c3d</td>
+        <td style="background:#ecf0f1">#ecf0f1</td>
+        <td style="background:#96a6a6">#96a6a6</td>
+    </tr>
+    <tr>
+    	<td style="background:#16a086">#16a086</td>
+        <td style="background:#27ae61">#27ae61</td>
+        <td style="background:#2a80b9">#2a80b9</td>
+        <td style="background:#8f44ad">#8f44ad</td>
+        <td style="background:#2d3e50">#2d3e50</td>
+        <td style="background:#f49c14">#f49c14</td>
+        <td style="background:#d55401">#d55401</td>
+        <td style="background:#c1392b">#c1392b</td>
+        <td style="background:#bec3c7">#bec3c7</td>
+        <td style="background:#808b8d">#808b8d</td>
+    </tr>
+</table>
+<table class="tt" cellpadding="0" cellspacing="0">
+    <tr>
+    	<td style="background:#56eed9">#56eed9</td>
+        <td style="background:#74f1e1">#74f1e1</td>
+        <td style="background:#56eed9">#56eed9</td>
+        <td style="background:#3addc8">#3addc8</td>
+        <td style="background:#28cbb6">#28cbb6</td>
+        <td style="background:#1fbba6">#1fbba6</td>
+        <td style="background:#199482">#199482</td>
+    </tr>
+    <tr>
+    	<td style="background:#54d5eb">#54d5eb</td>
+    	<td style="background:#f9aa33">#f9aa33</td>
+        <td style="background:#f75455">#f75455</td>
+    </tr>
+</table>
 </body>
 </html>

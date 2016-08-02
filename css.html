@@ -1,11 +1,13 @@
-﻿<style>*{padding:0;margin: 0;font-size: 20px}body{padding:40px;}div,p{margin:10px auto}</style>
-<pre>1. css 雪碧（CSS Sprite）
+﻿<style>*{padding:0;margin: 0;font-size: 16px}body{padding:40px;}div,p{margin:10px auto}</style>
+<pre>
+1. css 雪碧（CSS Sprite）
 
    雪碧图 与 background-position
+   
 </pre>
-<br/></br>
 <pre>
 2. css animation
+
   @-webkit-keyframes water {
     0% { left:0px}
     50% { left:100px}
@@ -30,9 +32,9 @@
   animation:动画名称 持续时间 过渡类型 延迟的时间 循环次数 
 </pre>
 <p style="width:100px;height:100px;background:#f00;color:#fff;text-align:center;line-height:100px;"> p </p>
-  <div id="box" style="width:100px;height:100px;background:#f00;color:#fff;text-align:center;line-height:100px;"> div click! </div>
-    <script>document.getElementById("box").onclick=function(){this.className="ani"};</script>
-  <style>
+<div id="box" style="width:100px;height:100px;background:#f00;color:#fff;text-align:center;line-height:100px;"> div click! </div>
+<script>document.getElementById("box").onclick=function(){this.className="ani"};</script>
+<style>
     @-webkit-keyframes test {
     0% { width:0px}
     50% { width:100px}
@@ -53,36 +55,35 @@
     -moz-animation: 4s test linear infinite 2s;
     animation: 4s test linear infinite 2s;
   }
-  </style>
-  <a href="http://m.isux.us/qz-act/vip/20140903-qzonev5/m-index.html">应用场景1</a>
-    <a href="http://qzs.qq.com/qzone/qzact/act/qzapp/qzone5.0/mobile/index.html">应用场景2</a>
-    
-    <a href="http://isux.tencent.com/play-with-html5-animate.html">详细...</a>
+</style>
+<a href="http://m.isux.us/qz-act/vip/20140903-qzonev5/m-index.html">应用场景1</a>
+<a href="http://qzs.qq.com/qzone/qzact/act/qzapp/qzone5.0/mobile/index.html">应用场景2</a>
+<a href="http://isux.tencent.com/play-with-html5-animate.html">详细...</a>
   <pre>
 3. css transition
-  a{
+  a.test{
     background-color:#56eed9;
     transition:background-color .5s ease-in;
   }
-  a:hover{
+  a.test:hover{
     background-color:#199482;
     transition:background-color 2s ease-in;
   }
   </pre>
-  <a style="display:block;padding:10px;">css transition</a>
-  <a class="on" style="display:block;padding:10px;">css transition</a>
+  <a class="test" style="display:block;padding:10px;">css transition</a>
+  <a class="on test" style="display:block;padding:10px;">css transition</a>
     <style>
-      a{
+      a.test{
         color: #fff;
       background-color:#56eed9;
       }
-      a:hover{
+      a.test:hover{
         background-color:#199482;
       }
-      a.on{
+      a.test.on{
         transition:background-color .3s ease-in;
       }
-      a.on:hover{
+      a.test.on:hover{
         transition:background-color 1s ease-in;
       }
     </style>
@@ -127,7 +128,8 @@
   <a href="http://fontello.com/">fontello</a>
 </pre>
 <br/></br>
-<pre>7. css flex与box
+<pre>
+7. css flex与box
   flex 新 12年
   box 旧 09年
   ul{
@@ -166,7 +168,7 @@
   }
   ul li{
     box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;
-    flex:1;-webkit-flex:1;
+    flex:1;-webkit-flex:1;-moz-flex:1;-ms-flex:1;
   }
 </pre>
 <ul class="ul">
@@ -237,7 +239,7 @@
   }
   ul.ul1 li:nth-of-type(1){
     box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;
-    flex:1;
+    flex:1;-webkit-flex:1;-moz-flex:1;-ms-flex:1;
     height: 11px;
     font-size: 12px;
     background: #56eed9
