@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>sweetalert文档</title>
+<script src="sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="sweetalert.css">
+<link rel="stylesheet" type="text/css" href="../css/blog.css">
+</head>
+<body>
+<div class="main">
+<table width=100%>
+	<tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                <button>点击</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[0].onclick = function(){
+					swal("点击了按钮！")
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>swal(<span class="str">"点击了按钮！"</span>)</pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+        	<div style="text-align:center;padding:20px 0;">
+                <button>点击</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[1].onclick = function(){
+					swal("通知", "点击了按钮！")
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>swal(<span class="str">"通知"</span>, <span class="str">"点击了按钮！"</span>)</pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+        	<div style="text-align:center;padding:20px 0;">
+                <select>
+                	<option value="success">success</option>
+                    <option value="warning">warning</option>
+                    <option value="error">error</option>
+                    <option value="info">info</option>
+                </select>
+                <br>
+                <button>点击</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[2].onclick = function(){
+					swal("通知", "操作成功！", document.getElementsByTagName("select")[0].value);
+				}
+				document.getElementsByTagName("select")[0].onchange = function(){
+					document.getElementById("type").innerHTML = '"' + this.value + '"';
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>swal(<span class="str">"通知"</span>, <span class="str">"操作成功！"</span>, <span class="str" id="type">"success"</span>)</pre>
+        </td>
+    </tr>
+</table>
+
+	
+</div>
+</body>
+</html>
