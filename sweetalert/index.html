@@ -54,7 +54,7 @@
             </div>
             <script>
             	document.getElementsByTagName("button")[2].onclick = function(){
-					swal("通知", "操作成功！", document.getElementsByTagName("select")[0].value);
+					swal("通知", "点击了按钮！", document.getElementsByTagName("select")[0].value);
 				}
 				document.getElementsByTagName("select")[0].onchange = function(){
 					document.getElementById("type").innerHTML = '"' + this.value + '"';
@@ -62,7 +62,57 @@
             </script>
         </td>
         <td>
-        	<pre>swal(<span class="str">"通知"</span>, <span class="str">"操作成功！"</span>, <span class="str" id="type">"success"</span>)</pre>
+        	<pre>swal(<span class="str">"通知"</span>, <span class="str">"点击了按钮！"</span>, <span class="str" id="type">"success"</span>)</pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+        	<div style="text-align:center;padding:20px 0;">
+                <button>点击</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[3].onclick = function(){
+					swal({     
+							title: "通知",     
+							text: "确定要删除吗？",     
+							type: "warning",   
+							allowOutsideClick:false,  
+							showCancelButton: true,     
+							confirmButtonColor: "#DD6B55",     
+							confirmButtonText: "确定",     
+							cancelButtonText: "取消",     
+							closeOnConfirm: false,     
+							closeOnCancel: false 
+						}, 
+						function(isConfirm){     
+							if (isConfirm) {         
+							swal("已删除", "你点击了确认", "success");     
+							} else {         
+							swal("已取消", "你点击了取消", "error");     
+						} 
+					});
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>swal({
+                &nbsp;&nbsp;&nbsp;&nbsp;title: <span class="str">"通知"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;text: <span class="str">"确定要删除吗？"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;type: <span class="str">"warning"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;confirmButtonColor: <span class="str">"#DD6B55"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;confirmButtonText: <span class="str">"确定"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;cancelButtonText: <span class="str">"取消"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;closeOnCancel: <span class="val">false</span>
+                },
+                <span class="func"><i>function</i></span>(isConfirm){
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">if</span> (isConfirm) {
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(<span class="str">"已删除"</span>, <span class="str">"你点击了确认"</span>, <span class="str">"success"</span>);
+                &nbsp;&nbsp;&nbsp;&nbsp;} <span class="tag">else</span> {
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(<span class="str">"已取消"</span>, <span class="str">"你点击了取消"</span>, <span class="str">"error"</span>);
+                &nbsp;&nbsp;&nbsp;&nbsp;}
+                });</pre>
         </td>
     </tr>
 </table>
