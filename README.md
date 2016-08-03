@@ -8,3 +8,5 @@
 <a href="http://wangmoumei.github.io/jsnote.html" target="_blank">js笔记</a>   
     
 <a href="http://wangmoumei.github.io/messagebox" target="_blank">messagebox API文档</a>    
+
+<a href="http://wangmoumei.github.io/sweetalert" target="_blank">sweetalert API文档</a>    
