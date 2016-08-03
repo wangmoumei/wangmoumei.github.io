@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JQuery 笔记</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/blog.css">
+<script src="js/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+<div class="main">
+<table width=100%>
+	<tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                全局设置ajax loading动画以及错误回调
+            </div>
+            
+        </td>
+        <td>
+        	<pre>
+            	$(document).ajaxStart(<i class="func">function</i>() {
+               	    $(<span class="str">"#loading"</span>).<span class="func">show</span>();
+             	});
+                $(document).ajaxStop(<i class="func">function</i>() {
+               	    $(<span class="str">"#loading"</span>).<span class="func">hide</span>();
+             	});
+                $(document).ajaxError(<i class="func">function</i>(event, request, settings, thrownError) {
+                    swal(<span class="str">"提示"</span>, <span class="str">"系统错误！"</span>, <span class="str">"error"</span>)
+             	});
+            </pre>
+        </td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>
