@@ -21,14 +21,55 @@
         <td>
         	<pre>
             	$(document).ajaxStart(<i class="func">function</i>() {
-               	    $(<span class="str">"#loading"</span>).<span class="func">show</span>();
+               	    &nbsp;&nbsp;&nbsp;&nbsp;$(<span class="str">"#loading"</span>).<span class="func">show</span>();
              	});
                 $(document).ajaxStop(<i class="func">function</i>() {
-               	    $(<span class="str">"#loading"</span>).<span class="func">hide</span>();
+               	    &nbsp;&nbsp;&nbsp;&nbsp;$(<span class="str">"#loading"</span>).<span class="func">hide</span>();
              	});
                 $(document).ajaxError(<i class="func">function</i>(event, request, settings, thrownError) {
-                    swal(<span class="str">"提示"</span>, <span class="str">"系统错误！"</span>, <span class="str">"error"</span>)
+                    &nbsp;&nbsp;&nbsp;&nbsp;swal(<span class="str">"提示"</span>, <span class="str">"系统错误！"</span>, <span class="str">"error"</span>)
              	});
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                事件绑定 bind
+            </div>
+            
+        </td>
+        <td>
+        	<pre>
+            	$(<span class="str">'#foo'</span>).bind(<span class="str">'mouseenter mouseleave'</span>, <i class="func">function</i>() {
+                  &nbsp;&nbsp;&nbsp;&nbsp;// do something
+                });
+                $(<span class="str">'#foo'</span>).bind({
+                  &nbsp; &nbsp; click: <i class="func">function</i>() {
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do something on click
+                  &nbsp;&nbsp;&nbsp;&nbsp;},
+                  &nbsp; &nbsp; mouseenter: <i class="func">function</i>() {
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do something on mouseenter
+                  &nbsp;&nbsp;&nbsp;&nbsp;}
+                });
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                事件委托 on，一次性事件委托 one
+            </div>
+            
+        </td>
+        <td>
+        	<pre>
+            	$(<span class="str">"body"</span>).on(<span class="str">"click"</span>, <span class="str">"p"</span>, function(event){
+                  &nbsp;&nbsp;&nbsp;&nbsp;alert( $(<span class="attr">this</span>).text() );
+                });
+                $( <span class="str">"#foo"</span> ).one( <span class="str">"click"</span>, function() {
+                  &nbsp;&nbsp;&nbsp;&nbsp;alert( <span class="str">"This will be displayed only once."</span> );
+                });
             </pre>
         </td>
     </tr>
