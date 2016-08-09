@@ -20,11 +20,38 @@ pre{
 
 <body>
 <pre>
-在前端开发中，经常会用到css的position:absolute对层进行定位，但ie6对left,top,right,bottom等属性的解释和ie7，ie8及firefox、chrome等不一致。
+用css的position:absolute对层进行定位时，ie6对left,top,right,bottom等属性的解释和ie7，ie8及firefox、chrome等不一致。
 在父层使用position:relative;和padding后，ie6中层的定位起始坐标是从padding后的位置算起，而其他浏览器则从层的真实位置算起。
 这点造成使用position:absolute进行层定位时ie6与其他浏览器的表现不一样。
 这种情况可以采用css hack的方法。在子层div中针对ie6添加样式_top:*px; _left:*px;
 </pre>
+<pre>
+ie6不支持两个连续并列class类型的写法，如：
+.item{
+	background:#eee;
+}
+.item.active{
+	background:#f00;//ie6不支持
+}
+解决方案1：多嵌套一层，但是不利于js的dom操作，点击事件绑在父元素上，class修改却要找子元素
+.item{
+	background:#eee;
+}
+.item span.active{
+	background:#f00;
+}
+js:
+$(".item").click(function(){
+	$(this).find("span").addClass("active");
+})
 
+解决方案2：id + class
+.item{
+	background:#eee;
+}
+.item#itemActive{
+	background:#f00;
+}
+</pre>
 </body>
 </html>
