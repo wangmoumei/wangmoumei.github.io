@@ -7,140 +7,162 @@
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 <link rel="stylesheet" href="css/messagebox.css">
 <script type="text/javascript" src="js/messagebox.js"></script>
-<style>
-div{
-	font-size:12px;
-	word-break:break-all;	
-}
-button{
-	background:#3598dc;
-	color:#fff;
-	border:none;
-	padding:5px;
-	border-radius:4px;
-	box-shadow:1px 1px 1px 1px rgba(0,0,0,.2);
-	cursor:pointer;
-}
-pre{
-	font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;	
-	display: block;
-    white-space: pre;
-	font-size:14px;
-    margin: 1em 0px;
-	background:#eee;
-	padding:2em;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="../css/blog.css">
 </head>
 
 <body>
-<button id="alertbox">alertbox</button>
-<script type="text/javascript">
-document.getElementById('alertbox').onclick = function(){alertbox("这是alertbox",function(){
-	messagebox("简单地回调");
-});}
-</script>
-<pre>
-    alertbox( "这是alertbox" ,function(){
-        messagebox( "简单地回调" );
-    });
-</pre>
-<br/>
-<button id="messagebox">messagebox</button>
-<script type="text/javascript">
-document.getElementById('messagebox').onclick = function(){messagebox("这是messagebox");}
-</script>
-<pre>
-	messagebox("这是messagebox");
-</pre>
-<br/>
-<button id="confirmbox">confirmbox</button>
-<script type="text/javascript">
-document.getElementById('confirmbox').onclick = function(){
-	confirmbox("这是confirmbox",function(){
-		alertbox("点击确定，激活事件");
-	});
-}
-</script>
-
-<pre>
-    confirmbox("这是confirmbox",function(){
-    	alertbox("点击确定，激活事件");
-    });
-</pre>
-<br/><br/>
-<button id="promptbox">promptbox</button>
-<script type="text/javascript">
-document.getElementById('promptbox').onclick = function(){
-	promptbox("placeholder内容",function(str){
-		alertbox(str);
-	});
-}
-</script>
-<pre>
-    promptbox("placeholder内容",function(str){
-        alertbox(str);
-    });
-</pre>
-<br/><br/>
-
-<button id="noticebox">noticebox</button>
-<script type="text/javascript">
-document.getElementById('noticebox').onclick = function(){
-	noticebox("<span style='color:#bec3c7'>某某人</span>上线了");	
-}
-</script>
-<pre>
-	noticebox("<span style='color:#bec3c7'>某某人</span>上线了");	
-</pre>
-<br/><br/>
-<button id="loadingbox">loadingbox</button>
-<script type="text/javascript">
-document.getElementById("loadingbox").onclick = function(){
-	loadingbox("提交中...",function(obj){
-		setTimeout(function(){
-			var n = 3,
-			timer = setInterval(function(){
-				n--;
-				obj.text(n+"秒后自动跳转");
-				if(n==0){
-					clearInterval(timer);
-					obj.hide();
-				}	
-			},1000);
-			obj.broken("3秒后自动跳转",function(){
-				//点击事件
-				obj.hide();
-				clearInterval(timer);
-				noticebox("点击");	
-			});
-		},1600);
-	});
-}
-</script>
-<pre>
-    loadingbox( "提交中..." ,function(obj){
-        setTimeout(function(){
-            var n = 3,
-            timer = setInterval(function(){
-                n--;
-                obj.text(n+"秒后自动跳转");
-                if(n==0){
-                    clearInterval(timer);
-                    obj.hide();
-                }	
-            },1000);
-            obj.broken("3秒后自动跳转",function(){
-                //点击事件
-                obj.hide();
-                clearInterval(timer);
-                noticebox("点击");	
+<div class="main">
+<table width=100%>
+	<tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                <button>alertbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[0].onclick = function(){
+					alertbox(
+						"这是alertbox",
+						function(){
+							messagebox("简单地回调");
+						}
+					);
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>
+            alertbox(<span class="str">"这是alertbox"</span>,<i class="func">function</i>(){
+            &nbsp;&nbsp;<span class="func">messagebox</span>(<span class="str">"简单地回调"</span>);
             });
-        },1600);
-    });
-</pre>
-
-<br/><br/>
-
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                <button>messagebox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[1].onclick = function(){
+					messagebox("这是messagebox");
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>messagebox(<span class="str">"这是messagebox"</span>);</pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                <button>confirmbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[2].onclick = function(){
+					confirmbox("这是confirmbox",function(){
+						alertbox("点击确定，激活事件");
+					});
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>
+            confirmbox(<span class="str">"这是confirmbox"</span>,<i class="func">function</i>(){
+            &nbsp;&nbsp;<span class="func">alertbox</span>(<span class="str">"点击确定，激活事件"</span>);
+            });
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                <button>promptbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[3].onclick = function(){
+					promptbox("placeholder内容",function(str){
+						alertbox(str);
+					});
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>
+            promptbox(<span class="str">"placeholder内容"</span>,<i class="func">function</i>(str){
+            &nbsp;&nbsp;<span class="func">alertbox</span>(str);
+            });
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                <button>noticebox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[4].onclick = function(){
+					noticebox("<span style='color:#bec3c7'>某某人</span>上线了");	
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>
+            noticebox(<span class="str">"<span><</span>span style='color:#bec3c7'>某某人<span><</span>/span>上线了"</span>);	
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                <button>loadingbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[5].onclick = function(){
+					loadingbox("提交中...","立刻跳转",function(obj){
+						setTimeout(function(){
+							var n = 3,
+							timer = setInterval(function(){
+								n--;
+								obj.text(n+"秒后自动跳转");
+								if(n==0){
+									clearInterval(timer);
+									obj.hide();
+								}	
+							},1000);
+							obj.broken("3秒后自动跳转",function(){
+								//点击事件
+								clearInterval(timer);
+								obj.text("点击");	
+							});
+						},1600);
+					});
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>
+            loadingbox( <span class="str">"提交中..."</span>, <span class="str">"立刻跳转"</span> ,<i class="func">function</i>(obj){
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="func">setTimeout</span>(<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">var</span> n = <span class="val">3</span>,
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timer = <span class="func">setInterval</span>(<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n --;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.text(n + <span class="str">"秒后自动跳转"</span>);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(n == <span class="val">0</span>){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">clearInterval</span>(timer);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.hide();
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}	
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1000</span>);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.broken(<span class="str">"3秒后自动跳转"</span>,<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">//点击事件</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">clearInterval</span>(timer);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">obj.text</span>(<span class="str">"点击"</span>);	
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+            &nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1600</span>);
+            });
+            </pre>
+        </td>
+    </tr>
+</table>	
+</div>
 </body>
 </html>

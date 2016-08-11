@@ -102,29 +102,39 @@
                 n.removeChild(this);
         });
     }
-    w.loadingbox = function (str, fun) {
+    w.loadingbox = function (str, fun , func) {
         addscreen();
         d.getElementById('Mes-Content').innerHTML = str;
-        d.getElementById('Mes-Btn').innerHTML = '<div id="Mes-Load"><div class="ajax-loader"></div></div>';
-        fun({
-            broken: function (str1, fun1) {
-                d.getElementById('Mes-Content').innerHTML = str1;
-                d.getElementById('Mes-Btn').innerHTML = '<div id="Mes-Ensure">确定</div>';
-                d.getElementById('Mes-Ensure').onclick = function () {
-                    m.className = "hideMes";
-                    setTimeout(function () {
-                        m.style.display = "none";
-                        if (fun1)
-                            fun1();
-                    }, 600);
-                }
-            }, hide: function () {
-                m.className = "hideMes";
-                setTimeout(function () { m.style.display = "none"; }, 600);
-            }, text: function (str1) {
-                d.getElementById('Mes-Content').innerHTML = str1;
-            }
-        });
+		d.getElementById('Mes-Btn').innerHTML = '<div id="Mes-Load"><div class="ajax-loader"></div></div>';
+		var btn = "确定";
+		if(fun){
+			switch(typeof fun){
+				case "function":
+					func = fun;
+					break;
+				case "string":
+					btn = fun;
+					break;
+			}
+		}
+		if(func && typeof func == "function")
+			func({
+				broken: function (str1, fun1) {
+					d.getElementById('Mes-Content').innerHTML = str1;
+					d.getElementById('Mes-Btn').innerHTML = '<div id="Mes-Ensure">' + btn + '</div>';
+					d.getElementById('Mes-Ensure').onclick = fun1 || function () {
+						m.className = "hideMes";
+						setTimeout(function () {
+							m.style.display = "none";
+						}, 600);
+					}
+				}, hide: function () {
+					m.className = "hideMes";
+					setTimeout(function () { m.style.display = "none"; }, 600);
+				}, text: function (str1) {
+					d.getElementById('Mes-Content').innerHTML = str1;
+				}
+			});
 
     }
 })()
