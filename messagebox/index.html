@@ -15,11 +15,37 @@
 <table width=100%>
 	<tr>
     	<td>
-            <div style="text-align:center;padding:20px 0;">
+            <div style="padding:20px 0;">
+                alertbox( [提示文案string] )<br>
+                alertbox( [提示文案string] , [回调函数function] )
+            </div>
+            
+        </td>
+        <td>
+        	<pre>
+            alertbox(<span class="str">"这是alertbox"</span>);
+            </pre>
+        	<div style="text-align:center;padding-bottom:10px;">
                 <button>alertbox</button>
             </div>
             <script>
             	document.getElementsByTagName("button")[0].onclick = function(){
+					alertbox("这是alertbox");
+				}
+            </script>
+        </td>
+        <td>
+        	
+        	<pre>
+            alertbox(<span class="str">"这是alertbox"</span>,<i class="func">function</i>(){
+            &nbsp;&nbsp;<span class="func">messagebox</span>(<span class="str">"简单地回调"</span>);
+            });
+            </pre>
+            <div style="text-align:center;padding-bottom:10px;">
+                <button>alertbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[1].onclick = function(){
 					alertbox(
 						"这是alertbox",
 						function(){
@@ -29,41 +55,33 @@
 				}
             </script>
         </td>
-        <td>
-        	<pre>
-            alertbox(<span class="str">"这是alertbox"</span>,<i class="func">function</i>(){
-            &nbsp;&nbsp;<span class="func">messagebox</span>(<span class="str">"简单地回调"</span>);
-            });
-            </pre>
-        </td>
     </tr>
+</table>
+<table width=100%>
     <tr>
     	<td>
-            <div style="text-align:center;padding:20px 0;">
+            <div style="padding:20px 0;">
+                messagebox( [提示文案string] )
+            </div>
+        </td>
+        <td>
+        	
+        	<pre>messagebox(<span class="str">"这是messagebox"</span>);</pre>
+            <div style="text-align:center;padding-bottom:10px;">
                 <button>messagebox</button>
             </div>
             <script>
-            	document.getElementsByTagName("button")[1].onclick = function(){
+            	document.getElementsByTagName("button")[2].onclick = function(){
 					messagebox("这是messagebox");
 				}
             </script>
         </td>
-        <td>
-        	<pre>messagebox(<span class="str">"这是messagebox"</span>);</pre>
-        </td>
     </tr>
     <tr>
     	<td>
-            <div style="text-align:center;padding:20px 0;">
-                <button>confirmbox</button>
+            <div style="padding:20px 0;">
+                confirmbox( [提示文案string] , [回调函数function] )
             </div>
-            <script>
-            	document.getElementsByTagName("button")[2].onclick = function(){
-					confirmbox("这是confirmbox",function(){
-						alertbox("点击确定，激活事件");
-					});
-				}
-            </script>
         </td>
         <td>
         	<pre>
@@ -71,20 +89,23 @@
             &nbsp;&nbsp;<span class="func">alertbox</span>(<span class="str">"点击确定，激活事件"</span>);
             });
             </pre>
+            <div style="text-align:center;padding-bottom:10px;">
+                <button>confirmbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[3].onclick = function(){
+					confirmbox("这是confirmbox",function(){
+						alertbox("点击确定，激活事件");
+					});
+				}
+            </script>
         </td>
     </tr>
     <tr>
     	<td>
-            <div style="text-align:center;padding:20px 0;">
-                <button>promptbox</button>
+            <div style="padding:20px 0;">
+                promptbox( [提示文案string] , [回调函数function] )
             </div>
-            <script>
-            	document.getElementsByTagName("button")[3].onclick = function(){
-					promptbox("placeholder内容",function(str){
-						alertbox(str);
-					});
-				}
-            </script>
         </td>
         <td>
         	<pre>
@@ -92,32 +113,118 @@
             &nbsp;&nbsp;<span class="func">alertbox</span>(str);
             });
             </pre>
+            <div style="text-align:center;padding-bottom:10px;">
+                <button>promptbox</button>                
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[4].onclick = function(){
+					promptbox("placeholder内容",function(str){
+						alertbox(str);
+					});
+				}
+            </script>
         </td>
     </tr>
     <tr>
     	<td>
-            <div style="text-align:center;padding:20px 0;">
-                <button>noticebox</button>
+            <div style="padding:20px 0;">
+                noticebox( [提示文案string] )
             </div>
-            <script>
-            	document.getElementsByTagName("button")[4].onclick = function(){
-					noticebox("<span style='color:#bec3c7'>某某人</span>上线了");	
-				}
-            </script>
         </td>
         <td>
         	<pre>
             noticebox(<span class="str">"<span><</span>span style='color:#bec3c7'>某某人<span><</span>/span>上线了"</span>);	
             </pre>
-        </td>
-    </tr>
-    <tr>
-    	<td>
-            <div style="text-align:center;padding:20px 0;">
-                <button>loadingbox</button>
+            <div style="text-align:center;padding-bottom:10px;">
+                <button>noticebox</button>
             </div>
             <script>
             	document.getElementsByTagName("button")[5].onclick = function(){
+					noticebox("<span style='color:#bec3c7'>某某人</span>上线了");	
+				}
+            </script>
+        </td>
+    </tr>
+    </table>
+<table width=100%>
+    <tr>
+    	<td>
+            <div style="padding:20px 0;">
+                loadingbox( [提示文案string] , [回调函数function] )<br>
+                loadingbox( [提示文案string] , [按钮文案string] , [回调函数function] )
+            </div>
+        </td>
+        <td>
+        	<pre>
+            loadingbox(<span class="str">"提交中..."</span>,<i class="func">function</i>(obj){
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="func">setTimeout</span>(<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.hide();//关闭
+            &nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1600</span>);
+            });
+            </pre>
+            <div style="text-align:center;padding-bottom:10px;">
+                <button>loadingbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[6].onclick = function(){
+					loadingbox("提交中...",function(obj){
+						setTimeout(function(){
+							obj.hide();//关闭
+						},1600);
+					});
+				}
+            </script>
+            <pre>
+            loadingbox(<span class="str">"提交中..."</span>,<i class="func">function</i>(obj){
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="func">setTimeout</span>(<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.broken(<span class="str">"结束loading，并设定提示文案和按钮的点击绑定事件"</span>,<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">messagebox</span>(<span class="str">"点击"</span>);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+            &nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1600</span>);
+            });
+            </pre>
+            <div style="text-align:center;padding-bottom:10px;">
+                <button>loadingbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[7].onclick = function(){
+					loadingbox("提交中...",function(obj){
+						setTimeout(function(){
+							obj.broken("结束loading，并设定提示文案和按钮的点击绑定事件",function(){
+									messagebox("点击");
+							});
+						},1600);
+					});
+				}
+            </script>
+        </td>
+        <td>
+        	<pre>
+            loadingbox( <span class="str">"提交中..."</span>, <span class="str">"立刻跳转"</span> ,<i class="func">function</i>(obj){
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="func">setTimeout</span>(<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">var</span> n = <span class="val">3</span>,
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timer = <span class="func">setInterval</span>(<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n --;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">obj.text</span>(n + <span class="str">"秒后自动跳转"</span>);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(n == <span class="val">0</span>){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">clearInterval</span>(timer);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">obj.hide</span>();
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}	
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1000</span>);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.broken(<span class="str">"3秒后自动跳转"</span>,<i class="func">function</i>(){
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">//点击事件</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">clearInterval</span>(timer);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">obj.text</span>(<span class="str">"点击了"</span>);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">setTimeout</span>(<span class="func">obj.hide</span>,<span class="val">1000</span>);		
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+            &nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1600</span>);
+            });
+            </pre>
+            <div style="text-align:center;padding-bottom:10px;">
+                <button>loadingbox</button>
+            </div>
+            <script>
+            	document.getElementsByTagName("button")[8].onclick = function(){
 					loadingbox("提交中...","立刻跳转",function(obj){
 						setTimeout(function(){
 							var n = 3,
@@ -132,34 +239,13 @@
 							obj.broken("3秒后自动跳转",function(){
 								//点击事件
 								clearInterval(timer);
-								obj.text("点击");	
+								obj.text("点击了");
+								setTimeout(obj.hide,1000);
 							});
 						},1600);
 					});
 				}
             </script>
-        </td>
-        <td>
-        	<pre>
-            loadingbox( <span class="str">"提交中..."</span>, <span class="str">"立刻跳转"</span> ,<i class="func">function</i>(obj){
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="func">setTimeout</span>(<i class="func">function</i>(){
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">var</span> n = <span class="val">3</span>,
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timer = <span class="func">setInterval</span>(<i class="func">function</i>(){
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n --;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.text(n + <span class="str">"秒后自动跳转"</span>);
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(n == <span class="val">0</span>){
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">clearInterval</span>(timer);
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.hide();
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}	
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1000</span>);
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.broken(<span class="str">"3秒后自动跳转"</span>,<i class="func">function</i>(){
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">//点击事件</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">clearInterval</span>(timer);
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">obj.text</span>(<span class="str">"点击"</span>);	
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
-            &nbsp;&nbsp;&nbsp;&nbsp;},<span class="val">1600</span>);
-            });
-            </pre>
         </td>
     </tr>
 </table>	

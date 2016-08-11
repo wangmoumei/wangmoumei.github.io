@@ -1,5 +1,5 @@
 (function () {
-    var d = document, w = window, m, n = null;
+    var d = document, w = window, m, n = null,t = null;
     w.alertbox = function (str, fun) {
         addscreen();
         if (str.length < 20) str = '<p style="margin:0;padding:10px 0">' + str + '</p>';
@@ -7,8 +7,8 @@
         d.getElementById('Mes-Btn').innerHTML = '<div id="Mes-Ensure">确定</div>';
         d.getElementById('Mes-Ensure').onclick = function () {
             m.className = "hideMes";
-            setTimeout(function () {
-                m.style.display = "none";
+            t = setTimeout(function () {
+                m.style.display = "none";t = null;
                 if (fun)
                     fun();
             }, 600);
@@ -29,8 +29,8 @@
         bind();
         d.getElementById('Mes-Ensure').onclick = function () {
             m.className = "hideMes";
-            setTimeout(function () {
-                m.style.display = "none";
+            t = setTimeout(function () {
+                m.style.display = "none";t = null;
                 fun();
             }, 600);
         }
@@ -43,8 +43,9 @@
         d.getElementById('Mes-Ensure').onclick = function () {
             var variable = d.getElementById('Mes-Var').value;
             m.className = "hideMes";
-            setTimeout(function () {
+            t = setTimeout(function () {
                 m.style.display = "none";
+				t = null;
                 fun(variable);
             }, 600);
         }
@@ -53,6 +54,7 @@
         var screen_height = d.documentElement.clientHeight || document.body.clientHeight;
         var screen_width = d.documentElement.clientWidth || document.body.clientWidth;
         if (m) {
+			if(t) clearTimeout(t);
             m.className = 'showMes';
             m.style.display = "block";
             m.style.height = screen_height + 'px';
@@ -78,7 +80,7 @@
     function bind() {
         d.getElementById('Mes-Exit').onclick = function () {
             m.className = "hideMes";
-            setTimeout(function () { m.style.display = "none"; }, 600);
+            t = setTimeout(function () { m.style.display = "none";t = null; }, 600);
         }
     }
     w.noticebox = function (str) {
@@ -124,13 +126,13 @@
 					d.getElementById('Mes-Btn').innerHTML = '<div id="Mes-Ensure">' + btn + '</div>';
 					d.getElementById('Mes-Ensure').onclick = fun1 || function () {
 						m.className = "hideMes";
-						setTimeout(function () {
-							m.style.display = "none";
+						t = setTimeout(function () {
+							m.style.display = "none";t = null;
 						}, 600);
 					}
 				}, hide: function () {
 					m.className = "hideMes";
-					setTimeout(function () { m.style.display = "none"; }, 600);
+					t = setTimeout(function () { m.style.display = "none"; t = null;}, 600);
 				}, text: function (str1) {
 					d.getElementById('Mes-Content').innerHTML = str1;
 				}
