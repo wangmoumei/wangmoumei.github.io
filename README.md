@@ -1,14 +1,16 @@
-<h3>暂时...暂时在首页上放这个一年前开发的小游戏</h3>
-<p>待维护...</p>    
+###暂时在首页上放个小游戏
+待维护...    
     
-<a href="http://wangmoumei.github.io" target="_blank">首页</a>    
+[首页](http://wangmoumei.github.io)     
     
-<a href="http://wangmoumei.github.io/css.html" target="_blank">css笔记</a>    
+[css笔记](http://wangmoumei.github.io/css.html)     
     
-<a href="http://wangmoumei.github.io/jsnote.html" target="_blank">js笔记</a>   
+[js笔记 ](http://wangmoumei.github.io/jsnote.html)   
     
-<a href="http://wangmoumei.github.io/jqnote.html" target="_blank">jquery笔记</a>   
+[jquery笔记](http://wangmoumei.github.io/jqnote.html)    
+    
+[ie6兼容性实践笔记](http://wangmoumei.github.io/ie6.html)      
 
-<a href="http://wangmoumei.github.io/messagebox" target="_blank">messagebox API文档</a>    
+[messagebox API文档](http://wangmoumei.github.io/messagebox)     
 
-<a href="http://wangmoumei.github.io/sweetalert" target="_blank">sweetalert API文档</a>    
+[sweetalert API文档](http://wangmoumei.github.io/sweetalert)     
