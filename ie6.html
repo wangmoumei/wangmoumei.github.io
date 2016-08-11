@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ie6兼容性问题 爬坑</title>
+<title>ie6兼容性爬坑</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <style>
 *{padding:0;margin:0}
@@ -28,30 +28,39 @@ pre{
 <pre>
 ie6不支持两个连续并列class类型的写法，如：
 .item{
-	background:#eee;
+&nbsp;&nbsp;background:#eee;
 }
 .item.active{
-	background:#f00;//ie6不支持
+&nbsp;&nbsp;background:#f00;//ie6不支持
 }
 解决方案1：多嵌套一层，但是不利于js的dom操作，点击事件绑在父元素上，class修改却要找子元素
 .item{
-	background:#eee;
+&nbsp;&nbsp;background:#eee;
 }
 .item span.active{
-	background:#f00;
+&nbsp;&nbsp;background:#f00;
 }
 js:
 $(".item").click(function(){
-	$(this).find("span").addClass("active");
+&nbsp;&nbsp;$(this).find("span").addClass("active");
 })
 
 解决方案2：id + class
 .item{
-	background:#eee;
+&nbsp;&nbsp;background:#eee;
 }
 .item#itemActive{
-	background:#f00;
+&nbsp;&nbsp;background:#f00;
 }
+</pre>
+
+<pre>
+由于IE不支持border-radius而给input按钮设置背景图片时，在IE6、IE7中不显示的问题
+给按钮css加上
+&nbsp;&nbsp;display:block;
+同时要写
+&nbsp;&nbsp;background:url("sprite.jpg") no-repeat scroll **px **px;
+而不可以使用拆分background写法。
 </pre>
 </body>
 </html>

@@ -64,12 +64,68 @@
         </td>
         <td>
         	<pre>
-            	$(<span class="str">"body"</span>).on(<span class="str">"click"</span>, <span class="str">"p"</span>, function(event){
+            	$(<span class="str">"body"</span>).on(<span class="str">"click"</span>, <span class="str">"p"</span>, <i class="func">function</i>(event){
                   &nbsp;&nbsp;&nbsp;&nbsp;alert( $(<span class="attr">this</span>).text() );
                 });
-                $( <span class="str">"#foo"</span> ).one( <span class="str">"click"</span>, function() {
+                $( <span class="str">"#foo"</span> ).one( <span class="str">"click"</span>, <i class="func">function</i>() {
                   &nbsp;&nbsp;&nbsp;&nbsp;alert( <span class="str">"This will be displayed only once."</span> );
                 });
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                $.fn<br>
+                $.fn是指jquery的命名空间，加上fn上的方法及属性，会对jquery实例每一个有效。 <br>
+				如扩展$.fn.abc(),即$.fn.abc()是对jquery扩展了一个abc方法,那么后面你的每一个jquery实例都可以引用这个方法了. 
+            </div>
+            
+        </td>
+        <td>
+        	<pre>
+            	$.fn.add = <i class="func">function</i>(a,b){
+                &nbsp;&nbsp;console.log(<span class="attr">this</span>);
+                &nbsp;&nbsp;return a+b;
+                }
+                $(<span class="str">"#div"</span>).add( 1 , 2 ); 
+            </pre>
+        </td>
+    </tr>
+    
+</table>
+<table width="100%">
+<tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                $.extend(object)<br>
+                为jQuery类添加添加类方法，可以理解为添加静态方法 
+            </div>
+            
+        </td>
+        <td>
+        	<pre>
+            	$.extend({ 
+                &nbsp;&nbsp;add:<i class="func">function</i>(a,b){
+                &nbsp;&nbsp;&nbsp;&nbsp;return a+b;
+                &nbsp;&nbsp;} 
+                }); 
+                $.add( 1 , 2 );                 
+            </pre>
+        </td>
+        <td>
+        	<pre>              
+                $.fn.extend({ 
+                &nbsp;&nbsp;add:<i class="func">function</i>(a,b){
+                &nbsp;&nbsp;&nbsp;&nbsp;return a+b;
+                &nbsp;&nbsp;},
+                &nbsp;&nbsp;test:<i class="func">function</i>(){ 
+                &nbsp;&nbsp;&nbsp;&nbsp;$(this).click(function(){ 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert( $(<span class="attr">this</span>).add( 1 , 1 ) ); 
+                &nbsp;&nbsp;&nbsp;&nbsp;}); 
+                &nbsp;&nbsp;}
+                }); 
+                $(<span class="str">"#div"</span>).test(); 
             </pre>
         </td>
     </tr>
