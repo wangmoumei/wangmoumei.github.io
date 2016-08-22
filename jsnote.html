@@ -28,7 +28,16 @@ font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 <span><</span>meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"<span>></span>
 
 toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。
-style | currentStyle | runtimeStyle
+
+IE : currentStyle | runtimeStyle
+其他 : getComputedStyle
+我们要获取一个元素的高度，可以类似下面的代码：
+alert((element.currentStyle? element.currentStyle : window.getComputedStyle(element, null)).height);
+用途：
+var style = (element.currentStyle? element.currentStyle : window.getComputedStyle(element, null));
+IE : style.getAttribute("backgroundColor");
+其他 : style.getPropertyValue("float"); 
+
 
 getElementsByTagName(*)
 
