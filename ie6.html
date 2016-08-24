@@ -62,5 +62,13 @@ $(".item").click(function(){
 &nbsp;&nbsp;background:url("sprite.jpg") no-repeat scroll **px **px;
 而不可以使用拆分background写法。
 </pre>
+<pre>
+由于IE6只支持a标签上的hover伪类，并且必须有href属性，所以在ie6上实现hover效果的时候需要使用：
+<span><</span>a href="javascript:;">...你的标签...<span><</span>/a>
+然后css中针对：
+a:hover ...你的标签{
+    ...你的效果
+}
+</pre>
 </body>
 </html>
