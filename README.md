@@ -8,3 +8,4 @@
 * [ie6兼容性实践笔记](http://wangmoumei.github.io/ie6.html)      
 * [messagebox API文档](http://wangmoumei.github.io/messagebox)     
 * [sweetalert API文档](http://wangmoumei.github.io/sweetalert)     
+* [metisMenu API文档](http://wangmoumei.github.io/metisMenu)     
