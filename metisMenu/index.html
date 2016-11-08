@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>metisMenu文档</title>
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="metisMenu.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../bootstrap3/css/bootstrap.min.css">
+<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="metisMenu.min.css">
+<link rel="stylesheet" type="text/css" href="../css/blog.css">
+</head>
+<body>
+    <div style="text-align:center">
+        源代码请访问 <a href="https://github.com/onokumus/metisMenu" style="text-decoration:underline">Github</a>
+        <br>
+        基于jquery的手风琴伸缩组件，样式自写或参考demo
+        <br>
+        (* 本demo使用了font awesome字体图标库和bootstrap3)
+    </div>
+<div class="main">
+
+<table width=100%>
+	<tr>
+    	<td>
+			<style>
+				#menu{
+					width:200px;
+				}
+				.metismenu{
+					border-bottom: 1px solid #e2e2e2;
+				}
+				.metismenu .arrow{
+					padding-top:10px;
+				}
+            	.metismenu a:focus,.metismenu a:hover,.metismenu li.active>a{
+					background:rgb(238, 238, 238);	
+					text-decoration:none;
+				}
+				.metismenu a{
+					display:block;	
+					height:40px;
+					line-height:40px;
+					border-top: 1px solid #e2e2e2;
+					padding-left:10px;	
+				}
+				.metismenu ul>li>a{
+					padding-left:25px;	
+				}
+				.metismenu ul>li>ul>li>a{
+					padding-left:40px;	
+				}
+            </style>
+            <div style="padding:20px 0;">
+                <ul class="metismenu" id="menu">
+                  <li class="active">
+                    <a href="#" aria-expanded="true">
+                      <span class="sidebar-nav-item-icon fa fa-github fa-lg"></span>
+                      <span class="sidebar-nav-item">菜单1</span>
+                      <span class="fa arrow fa-fw"></span>
+                    </a>
+                    <ul aria-expanded="true" class="collapse in">
+                      <li>
+                        <a href="#">
+                          <span class="sidebar-nav-item-icon fa fa-code-fork fa-fw"></span>
+                          菜单1.1
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <span class="sidebar-nav-item-icon fa fa-star fa-fw"></span>
+                          菜单1.2
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <span class="sidebar-nav-item-icon fa fa-exclamation-triangle fa-fw"></span>
+                          菜单1.3
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#" aria-expanded="false">菜单2 <span class="fa arrow fa-fw"></span></a>
+                    <ul aria-expanded="false" class="collapse">
+                      <li><a href="#">菜单2.1</a></li>
+                      <li><a href="#">菜单2.2</a></li>
+                      <li>
+                        <a href="#" aria-expanded="false">菜单2.3 <span class="fa arrow fa-fw"></span></span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="#">菜单2.3.1</a></li>
+                          <li><a href="#">菜单2.3.2</a></li>
+                          <li><a href="#">菜单2.3.3</a></li>
+                          <li><a href="#">菜单2.3.4</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">菜单2.4</a></li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>
+            <script>
+            	$('#menu').metisMenu();
+            </script>
+        </td>
+        <td>
+        	<pre>$(<span class="str">'#menu'</span>).metisMenu();</pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+			<style>
+				#tree{
+					width:200px;	
+				}
+				.metisFolder {
+				  padding-left: 0;
+				}
+				.metisFolder li>a:before{
+					display: inline-block;
+					font: normal normal normal 14px/1 FontAwesome;
+					font-size: inherit;
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+				}
+				.metisFolder li.branch>a:before{
+					content: "\f07b";
+				}
+				.metisFolder li.active>a:before{
+					content: "\f115";
+				}
+				.metisFolder li.leaf>a:before{
+					content: "\f15b";
+				}
+				.metisFolder ul {
+					padding-left:20px;
+				}
+				.metisFolder li {
+				  position: relative;
+				}
+				.metisFolder li a {
+				  display: block;
+				  color: #333;
+				  text-decoration: none;
+				  outline: 0 none;
+				}
+				.metisFolder ul:before {
+				  position: absolute;
+				  border-left: 1px dotted #333;
+				  content: "";
+				  width: 30px;
+				  top: 25px;
+				  left: 5px;
+				  bottom: 15px;
+				}
+				.metisFolder ul > li:before {
+				  position: absolute;
+				  border-top: 1px dotted #333;
+				  content: "";
+				  width: 10px;
+				  top: 13px;
+				  left: -13px;
+				}
+				li.active > a > span.fa-folder-o:before {
+				  content: "\f115" !important;
+				}
+            </style>
+            <div style="padding:20px 0;">
+                <ul class="metisFolder" id="tree">
+                  <li class="branch active">
+                    <a href="#" aria-expanded="true"> 菜单1 </a>
+                    <ul aria-expanded="true" class="collapse in">
+                      <li>
+                        <a href="#" class="fa-file-o"> 菜单1.1 </a>
+                      </li>
+                      <li class="leaf">
+                        <a href="#"> 菜单1.2 </a>
+                      </li>
+                      <li class="leaf">
+                        <a href="#"> 菜单1.3 </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="branch">
+                    <a href="#" aria-expanded="false"> 菜单2 </a>
+                    <ul aria-expanded="false" class="collapse">
+                      <li><a href="#" class="fa-file-pdf-o">菜单2.1</a></li>
+                      <li><a href="#" class="fa-file-archive-o">菜单2.2</a></li>
+                      <li class="branch">
+                        <a href="#" aria-expanded="false"> 菜单2.3 </a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="#" class="fa-file-audio-o"> 菜单2.3.1 </a></li>
+                          <li><a href="#" class="fa-file-code-o"> 菜单2.3.2 </a></li>
+                          <li><a href="#" class="fa-file-excel-o"> 菜单2.3.3 </a></li>
+                          <li><a href="#" class="fa-file-image-o"> 菜单2.3.4 </a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#"> 菜单2.4 </a></li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>
+            <script>
+            	$('#tree').metisMenu();
+            </script>
+        </td>
+        <td>
+        	<pre>$(<span class="str">'#tree'</span>).metisMenu();</pre>
+        </td>
+    </tr>
+</table>
+
+	
+</div>
+</body>
+</html>
