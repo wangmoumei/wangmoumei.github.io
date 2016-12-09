@@ -4,18 +4,15 @@
 <meta charset="utf-8">
 <title>HTML/CSS/JS笔记</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/blog.css">
 <style>
 *{padding:0;margin:0}
 pre{
-	font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;	
-	display: block;
+    max-width:1920px;
     white-space: pre;
-	font-size:14px;
-    margin: 1em;
-	background:#f6f6f6;
-	padding:2em;
+
 }
-.tt td{color:#fff;text-align:center;padding:20px 30px;}
+
 </style>
 
 </head>
@@ -23,23 +20,87 @@ pre{
 <body style="padding:0;margin:0;">
 
 <pre>
-white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-<span><</span>meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"<span>></span>
 
+1.
+firefox出于安全策略，不支持虚拟DOM下的form的form.submit()提交表单方法。兼容性处理方法为：将虚拟DOM插入body后再执行。
+form.style.display = "none";
+document.body.appendChild(form);
+form.submit();
+</pre>
+<pre>
+2. 
+<span><</span>meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"<span>></span>
+</pre>
+<pre>
+3.
 toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。
+    
+split() join() 前者是切割成数组的形式，后者是将数组转换成字符串
+
+数组方法 Push()尾部添加 pop()尾部删除Unshift()头部添加 shift()头部删除
+</pre>
+<pre>
+4.
+日期格式化 new Date().Format("yyyy-MM-dd hh:mm:ss");
+Date.prototype.Format = function (format) {
+    var o = {
+        "M+": this.getMonth() + 1, //month 
+        "d+": this.getDate(), //day 
+        "h+": this.getHours(), //hour 
+        "m+": this.getMinutes(), //minute 
+        "s+": this.getSeconds(), //second 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
+        "S": this.getMilliseconds() //millisecond 
+    }
+
+    if (/(y+)/.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+        }
+    }
+    return format;
+}
+</pre>
+<pre>
+5.
+document.documentElement.clientWidth || document.body.clientWidth
+
+offsetHeight offsetLeft
+
+parseInt,parseFloat
 
 IE : currentStyle | runtimeStyle
 其他 : getComputedStyle
 我们要获取一个元素的高度，可以类似下面的代码：
 alert((element.currentStyle? element.currentStyle : window.getComputedStyle(element, null)).height);
 用途：
-var style = (element.currentStyle? element.currentStyle : window.getComputedStyle(element, null));
-IE : style.getAttribute("backgroundColor");
+    var style = (element.currentStyle? element.currentStyle : window.getComputedStyle(element, null));
+    IE : style.getAttribute("backgroundColor");
 其他 : style.getPropertyValue("float"); 
-
-
-getElementsByTagName(*)
+</pre>
+<pre>
+//自封装ajax
+new MyAjax("/home/test", null, function (data) {
+    var json = JSON.parse(data);
+    if (json.success) alert(json.msg);
+});
+function MyAjax(url,data,callBack) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function (even) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+            callBack(xhr.responseText);
+        } else
+            alert("Request was unsuccessful");
+    }
+    xhr.open("post", url , false);
+    xhr.send(data);
+}
+</pre>
+<pre>
 
 if(window.addEventListener){
     document.getElementById("xxx").addEventListener("click",function(event){
@@ -52,20 +113,14 @@ if(window.addEventListener){
         var element = event.srcElement||event.target;
     })
 }
-
-document.documentElement.clientWidth || document.body.clientWidth
-
-offsetHeight offsetLeft
-parseInt,parseFloat
-split() join() 前者是切割成数组的形式，后者是将数组转换成字符串
-
-数组方法 Push()尾部添加 pop()尾部删除Unshift()头部添加 shift()头部删除
-
+</pre>
+<pre>
 function isWeixin() {
     var a = navigator.userAgent.toLowerCase();
     return "micromessenger" == a.match(/MicroMessenger/i) ? !0 : !1
 }
-
+</pre>
+<pre>
 if(e.changedTouches){e=e.changedTouches[e.changedTouches.length-1];}
 box.addEventListener("mousedown", movestart);
 box.addEventListener("mouseup", moveend);
@@ -73,7 +128,9 @@ box.addEventListener("mousemove", moving);
 box.addEventListener("touchstart", movestart);
 box.addEventListener("touchend", moveend);
 box.addEventListener("touchmove", moving);
-
+</pre>
+<pre>
+JS动画
 fx(0,200,function(x){box.style.left=x+"px";},function(){},500,.3)
 function fx(f,t,fn,end,tm,pow){
     var D=Date;
@@ -86,28 +143,9 @@ function fx(f,t,fn,end,tm,pow){
         (false===fn(+f+(t-f)*Math.pow(z,pow),z)||z==1) && end && end(clearTimeout(e));
     },10);
 }
-去掉手机浏览器触摸高亮区 *:focus{outline: none;tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-user-modify:read-write-plaintext-only;}
-禁用手机系统默认菜单。-webkit-touch-callout:none
 
-@media (min-width:1110px){
-.banner{height:684px; background:url(img/banner1980.jpg) center center no-repeat; background-size:auto 100%;}
-}
-@media (min-width:769px) and (max-width:1110px){
-.banner{height:383px; background:url(img/banner1110.jpg) center center;}
-}
-@media (min-width:569px) and (max-width:768px){
-.banner{height:265px; background:url(img/banner768.jpg) center center;}
-}
-@media (min-width:415px) and (max-width:568px){
-.banner{height:196px; background:url(img/banner568.jpg) center center;}
-}
-@media (min-width:321px) and (max-width:414px){
-.banner{height:143px; background:url(img/banner414.jpg) center center;}
-}
-@media (max-width:320px){
-.banner{height:111px; background:url(img/banner320.jpg) center center;}
-}
-
+</pre>
+<pre>
 -webkit-animation: 4s water linear infinite;
 -moz-animation: 4s water linear infinite;
 animation: 4s water linear infinite;
@@ -137,88 +175,7 @@ html.addEventListener("animationstart",start);
 html.addEventListener("webkitAnimationEnd",end);
 html.addEventListener("animationend",end);
 css3的过渡属性transition，在动画结束时，也存在结束的事件：webkitTransitionEnd;
-
-new MyAjax("/home/test", null, function (data) {
-    var json = JSON.parse(data);
-    if (json.success) alert(json.msg);
-});
-function MyAjax(url,data,callBack) {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function (even) {
-        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-            callBack(xhr.responseText);
-        } else
-            alert("Request was unsuccessful");
-    }
-    xhr.open("post", url , false);
-    xhr.send(data);
-}
-
-日期格式化 new Date().Format("yyyy-MM-dd hh:mm:ss");
-Date.prototype.Format = function (format) {
-    var o = {
-        "M+": this.getMonth() + 1, //month 
-        "d+": this.getDate(), //day 
-        "h+": this.getHours(), //hour 
-        "m+": this.getMinutes(), //minute 
-        "s+": this.getSeconds(), //second 
-        "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
-        "S": this.getMilliseconds() //millisecond 
-    }
-
-    if (/(y+)/.test(format)) {
-        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    }
-
-    for (var k in o) {
-        if (new RegExp("(" + k + ")").test(format)) {
-            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-        }
-    }
-    return format;
-}
 </pre>
-<table class="tt" cellpadding="0" cellspacing="0">
-	<tr>
-    	<td style="background:#1bbc9d">#1bbc9d</td>
-        <td style="background:#2fcc71">#2fcc71</td>
-        <td style="background:#3598dc">#3598dc</td>
-        <td style="background:#9c59b8">#9c59b8</td>
-        <td style="background:#34495e">#34495e</td>
-        <td style="background:#f1c40f">#f1c40f</td>
-        <td style="background:#e77e23">#e77e23</td>
-        <td style="background:#e84c3d">#e84c3d</td>
-        <td style="background:#ecf0f1">#ecf0f1</td>
-        <td style="background:#96a6a6">#96a6a6</td>
-    </tr>
-    <tr>
-    	<td style="background:#16a086">#16a086</td>
-        <td style="background:#27ae61">#27ae61</td>
-        <td style="background:#2a80b9">#2a80b9</td>
-        <td style="background:#8f44ad">#8f44ad</td>
-        <td style="background:#2d3e50">#2d3e50</td>
-        <td style="background:#f49c14">#f49c14</td>
-        <td style="background:#d55401">#d55401</td>
-        <td style="background:#c1392b">#c1392b</td>
-        <td style="background:#bec3c7">#bec3c7</td>
-        <td style="background:#808b8d">#808b8d</td>
-    </tr>
-</table>
-<table class="tt" cellpadding="0" cellspacing="0">
-    <tr>
-    	<td style="background:#56eed9">#56eed9</td>
-        <td style="background:#74f1e1">#74f1e1</td>
-        <td style="background:#56eed9">#56eed9</td>
-        <td style="background:#3addc8">#3addc8</td>
-        <td style="background:#28cbb6">#28cbb6</td>
-        <td style="background:#1fbba6">#1fbba6</td>
-        <td style="background:#199482">#199482</td>
-    </tr>
-    <tr>
-    	<td style="background:#54d5eb">#54d5eb</td>
-    	<td style="background:#f9aa33">#f9aa33</td>
-        <td style="background:#f75455">#f75455</td>
-    </tr>
-</table>
+
 </body>
 </html>

@@ -5,11 +5,42 @@
 <title>css 课件</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" type="text/css" href="css/blog.css">
-<style>div,p{margin:10px auto}</style>
+<style>div,p{margin:10px auto}.tt td{color:#fff;text-align:center;padding:20px 30px;}</style>
 </head>
 
 <body>
 <div class="main">
+<pre>
+0. 常用css汇总
+全局字体设置：font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+去掉手机浏览器触摸高亮区 ：
+  *:focus{
+    outline: none;
+    tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color:rgba(0,0,0,0); 
+    -webkit-user-modify:read-write-plaintext-only;
+  }
+禁用手机系统默认菜单： -webkit-touch-callout:none
+常用的响应式banner：
+@media (min-width:1110px){
+.banner{height:684px; background:url(img/banner1980.jpg) center center no-repeat; background-size:auto 100%;}
+}
+@media (min-width:769px) and (max-width:1110px){
+.banner{height:383px; background:url(img/banner1110.jpg) center center;}
+}
+@media (min-width:569px) and (max-width:768px){
+.banner{height:265px; background:url(img/banner768.jpg) center center;}
+}
+@media (min-width:415px) and (max-width:568px){
+.banner{height:196px; background:url(img/banner568.jpg) center center;}
+}
+@media (min-width:321px) and (max-width:414px){
+.banner{height:143px; background:url(img/banner414.jpg) center center;}
+}
+@media (max-width:320px){
+.banner{height:111px; background:url(img/banner320.jpg) center center;}
+}
+</pre>
 <pre>
 1. css 雪碧（CSS Sprite）
 
@@ -364,7 +395,7 @@
 <pre>
 8 css 渐变色
 </pre>
-<a href="http://www.colorzilla.com/gradient-editor/">点击跳转</a>
+CSS3制作渐变色的按钮 → <a href="http://www.colorzilla.com/gradient-editor/">点击跳转</a>
 <pre>
 9 css 文本超出显示省略号 Ellipsis
 overflow: hidden;
@@ -385,7 +416,48 @@ box-shadow:0 0 0 0 #000;
 图片转自<a href="http://www.xuanfengge.com/css3-box-shadow-quick-tutorial.html">点击跳转</a>
 </pre>
 </div>
-
+<table class="tt" cellpadding="0" cellspacing="0">
+	<tr>
+    	<td style="background:#1bbc9d">#1bbc9d</td>
+        <td style="background:#2fcc71">#2fcc71</td>
+        <td style="background:#3598dc">#3598dc</td>
+        <td style="background:#9c59b8">#9c59b8</td>
+        <td style="background:#34495e">#34495e</td>
+        <td style="background:#f1c40f">#f1c40f</td>
+        <td style="background:#e77e23">#e77e23</td>
+        <td style="background:#e84c3d">#e84c3d</td>
+        <td style="background:#ecf0f1">#ecf0f1</td>
+        <td style="background:#96a6a6">#96a6a6</td>
+    </tr>
+    <tr>
+    	<td style="background:#16a086">#16a086</td>
+        <td style="background:#27ae61">#27ae61</td>
+        <td style="background:#2a80b9">#2a80b9</td>
+        <td style="background:#8f44ad">#8f44ad</td>
+        <td style="background:#2d3e50">#2d3e50</td>
+        <td style="background:#f49c14">#f49c14</td>
+        <td style="background:#d55401">#d55401</td>
+        <td style="background:#c1392b">#c1392b</td>
+        <td style="background:#bec3c7">#bec3c7</td>
+        <td style="background:#808b8d">#808b8d</td>
+    </tr>
+</table>
+<table class="tt" cellpadding="0" cellspacing="0">
+    <tr>
+    	<td style="background:#56eed9">#56eed9</td>
+        <td style="background:#74f1e1">#74f1e1</td>
+        <td style="background:#56eed9">#56eed9</td>
+        <td style="background:#3addc8">#3addc8</td>
+        <td style="background:#28cbb6">#28cbb6</td>
+        <td style="background:#1fbba6">#1fbba6</td>
+        <td style="background:#199482">#199482</td>
+    </tr>
+    <tr>
+    	<td style="background:#54d5eb">#54d5eb</td>
+    	<td style="background:#f9aa33">#f9aa33</td>
+        <td style="background:#f75455">#f75455</td>
+    </tr>
+</table>
 </body>
 </html>
 
