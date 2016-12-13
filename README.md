@@ -9,3 +9,4 @@
 * [messagebox API文档](http://wangmoumei.github.io/messagebox)     
 * [sweetalert API文档](http://wangmoumei.github.io/sweetalert)     
 * [metisMenu API文档](http://wangmoumei.github.io/metisMenu)     
+* [knockoutjs todolist Demo](http://wangmoumei.github.io/knockout) 
