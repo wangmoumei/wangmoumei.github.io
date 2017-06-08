@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>git 用法笔记</title>
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+<link rel="stylesheet" type="text/css" href="../css/blog.css">
+</head>
+
+<body>
+<div class="main">
+<table width=100%>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                克隆代码库 clone
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 拉取最新代码</span>
+                git clone <small class="attr">地址</small>
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                提交代码 commit
+                <p><small>提交前应先拉取服务器上的最新代码，拉取后检查差异代码，<br>保留正确的代码，删掉错误的代码<br>养成每天提交代码的习惯</small></p>
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 拉取最新代码</span>
+                git fetch   <small class="func">//不自动合并(merge)差异代码(diff)</small>
+                <small class="func">//或</small>
+                git pull    <small class="func">//自动合并(merge)差异代码(diff)</small>
+                <span class="str"># 把新文件(new)和被修改(modified)文件和删除(deleted)文件添加到暂存区</span>
+                git add -A
+                <span class="str"># 把暂存区的所有内容提交到当前分支</span>
+                git commit -m "<span class="attr">some message</span>"
+                <span class="str"># 把当前分支的代码推送到服务器</span>
+                git push
+                <span class="str"># 查看当前所在分支</span>
+                git status
+                <span class="str"># 查询提交记录</span>
+                git log
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                代码回滚 reset
+                <p><small>回滚之后提交过的代码都会被退回到本地暂存区，<br>可以再次提交，也可以放弃更改</small></p>
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 回滚到上一版本</span>
+                git reset --hard HEAD^   <small class="func">//HEAD就是指当前版本，一个^就是前一个版本</small>
+                <span class="str"># 回滚到之前第n个版本</span>
+                git reset --hard HEAD~<small class="attr">n</small>
+                <span class="str"># 回滚到commitid版本</span>
+                git reset --hard <small class="attr">commitid</small>
+                
+            </pre>
+        </td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>

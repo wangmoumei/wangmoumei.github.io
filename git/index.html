@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>git分支 用法笔记</title>
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+<link rel="stylesheet" type="text/css" href="../css/blog.css">
+</head>
+
+<body>
+    <div style="text-align:center">
+        原文 <a href="http://www.ruanyifeng.com/blog/2012/07/git.html" style="text-decoration:underline">Git分支管理策略 - 阮一峰的网络日志</a>
+    </div>
+<div class="main">
+<table width=100%>
+	<tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                迭代开发 develop
+                <p><small>clone下来代码库之后先看看哪个分支是develop分支</small></p>
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 创建Develop分支</span>
+                git checkout -b develop master
+                <span class="str"># 切换到Master分支</span>
+                git checkout master
+                <span class="str"># 对Develop分支进行合并</span>
+                git merge --no-ff develop
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                迭代开发时某一人针对某功能开发 feature
+                <p><small>接到需求开发新功能时创建feature分支</small></p>
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 创建一个功能分支：</span>
+                git checkout -b feature-x develop
+                <span class="str"># 开发完成后，将功能分支合并到develop分支：</span>
+                git checkout develop
+                git merge --no-ff feature-x
+                <span class="str"># 删除feature分支：</span>
+                git branch -d feature-x
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                预发布 release
+                <p><small>预发布时新建release分支，不在本次发布的功能继续在develop<br>分支开发，不影响即将发布的release分支内容</small></p>
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 创建一个预发布分支：</span>
+                git checkout -b release-1.2 develop
+                <span class="str"># 确认没有问题后，合并到master分支：</span>
+                git checkout master
+                git merge --no-ff release-1.2
+                <span class="str"># 对合并生成的新节点，做一个标签</span>
+                git tag -a 1.2
+                <span class="str"># 再合并到develop分支：</span>
+                git checkout develop
+                git merge --no-ff release-1.2
+                <span class="str"># 最后，删除预发布分支：</span>
+                git branch -d release-1.2
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                重大线上bug修复 fixbug
+                <p><small>线上代码master出现紧急更改或重大bug时单开master的bug分支</small></p>
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 创建一个修补bug分支：</span>
+                git checkout -b fixbug-0.1 master
+                <span class="str"># 修补结束后，合并到master分支：</span>
+                git checkout master
+                git merge --no-ff fixbug-0.1
+                git tag -a 0.1.1
+                <span class="str"># 再合并到develop分支：</span>
+                git checkout develop
+                git merge --no-ff fixbug-0.1
+                <span class="str"># 最后，删除"修补bug分支"：</span>
+                git branch -d fixbug-0.1
+
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                代码操作：<br>
+                提交代码 commit
+                <p><small>提交前应先拉取服务器上的最新代码，拉取后检查差异代码，<br>保留正确的代码，删掉错误的代码<br>养成每天提交代码的习惯</small></p>
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 拉取最新代码</span>
+                git fetch   <small class="func">//不自动合并(merge)差异代码(diff)</small>
+                <small class="func">//或</small>
+                git pull    <small class="func">//自动合并(merge)差异代码(diff)</small>
+                <span class="str"># 把新文件(new)和被修改(modified)文件和删除(deleted)文件添加到暂存区</span>
+                git add -A
+                <span class="str"># 把暂存区的所有内容提交到当前分支</span>
+                git commit -m "<span class="attr">some message</span>"
+                <span class="str"># 把当前分支的代码推送到服务器</span>
+                git push
+                <span class="str"># 查看当前所在分支</span>
+                git status
+                <span class="str"># 查询提交记录</span>
+                git log
+            </pre>
+        </td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>
