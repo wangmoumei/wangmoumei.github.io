@@ -21,4 +21,4 @@
 
 * [git常用的分支操作](http://wangmoumei.github.io/git)
 
-* [git常用的代码提交操作](http://wangmoumei.github.io/git)
+* [git常用的代码提交操作](http://wangmoumei.github.io/git/commit.html)
