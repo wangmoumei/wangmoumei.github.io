@@ -19,7 +19,7 @@
         <td>
         	<pre>
                 <span class="str"># 拉取最新代码</span>
-                git clone <small class="attr">地址</small>
+                git clone <span class="attr">地址</span>
             </pre>
         </td>
     </tr>
@@ -59,12 +59,31 @@
         <td>
         	<pre>
                 <span class="str"># 回滚到上一版本</span>
-                git reset --hard HEAD^   <small class="func">//HEAD就是指当前版本，一个^就是前一个版本</small>
+                git reset --hard HEAD^   <span class="func">//HEAD就是指当前版本，一个^就是前一个版本</span>
                 <span class="str"># 回滚到之前第n个版本</span>
-                git reset --hard HEAD~<small class="attr">n</small>
+                git reset --hard HEAD~<span class="attr">n</span>
                 <span class="str"># 回滚到commitid版本</span>
-                git reset --hard <small class="attr">commitid</small>
+                git reset --hard <span class="attr">commitid</span>
                 
+            </pre>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+            <div style="text-align:center;padding:20px 0;">
+                设置账户 config
+            </div>
+        </td>
+        <td>
+        	<pre>
+                <span class="str"># 为你本地库设置name和email</span>
+                git config --global user.name "<span class="attr">你的username</span>"  <span class="func">//全局name</span>
+
+                git config --global user.email "<span class="attr">你的email</span>"  <span class="func">//全局email</span>
+
+                git config --global user.name "<span class="attr">你的username</span>"  <span class="func">//当前目录git库的name</span>
+
+                git config --global user.email "<span class="attr">你的email</span>"  <span class="func">//当前目录git库的email</span>
             </pre>
         </td>
     </tr>
