@@ -11,7 +11,7 @@
 
 * [ie6兼容性实践笔记](http://wangmoumei.github.io/ie6.html)      
 
-* [messagebox API文档](http://wangmoumei.github.io/messagebox)     
+* [自制messagebox插件 API文档](http://wangmoumei.github.io/messagebox)     
 
 * [sweetalert API文档](http://wangmoumei.github.io/sweetalert)     
 
@@ -25,4 +25,4 @@
 
 * [git常用的代码提交操作](http://wangmoumei.github.io/git/commit.html)
 
-* [自动填充email后缀的插件](http://wangmoumei.github.io/autoEmail)
+* [自制自动填充email后缀的插件](http://wangmoumei.github.io/autoEmail)
