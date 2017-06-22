@@ -70,5 +70,15 @@ a:hover ...你的标签{
     ...你的效果
 }
 </pre>
+<pre>
+ie6、7、8下 “expected identifier, string or number”报错时原因一般为：
+定义对象的时候最后一个属性末尾多了逗号；
+定义json对象属性时，属性名没有用引号括起来
+</pre>
+
+<pre>
+ie6、7、8下 input一旦插入dom中，其type属性将被禁止更改。
+js创建input元素的时候，先设置input的type值，然后再把它append到dom里
+</pre>
 </body>
 </html>
