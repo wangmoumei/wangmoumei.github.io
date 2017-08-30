@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>schedule</title><link href=http://wangmoumei.github.io/font-awesome/css/font-awesome.min.css rel=stylesheet><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><script>Date.prototype.Format = function (format) {
+      var o = {
+          "M+": this.getMonth() + 1, //month 
+          "d+": this.getDate(), //day 
+          "h+": this.getHours(), //hour 
+          "m+": this.getMinutes(), //minute 
+          "s+": this.getSeconds(), //second 
+          "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
+          "S": this.getMilliseconds() //millisecond 
+      }
+
+      if (/(y+)/.test(format)) {
+          format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+      }
+
+      for (var k in o) {
+          if (new RegExp("(" + k + ")").test(format)) {
+              format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+          }
+      }
+      return format;
+    }</script><link href=/static/css/app.8af94a4909d6ae3aa2fe874f1462780d.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.488091c8a4f40154f555.js></script><script type=text/javascript src=/static/js/vendor.64d2873e0d2b30a3635a.js></script><script type=text/javascript src=/static/js/app.fb188d97da6eb78750fc.js></script></body></html>
