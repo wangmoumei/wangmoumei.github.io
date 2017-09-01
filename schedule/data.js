@@ -3,19 +3,37 @@ window.scheduleData = [
         date:"2017-09-23",
         list:[
             {
-                title:"aaaaaaa",
-                time:"10:00",
+                title:"浦东机场 T2",
+                time:{
+                    startTime:"14:40",
+                    endTime:"16:35"
+                },
                 list:[
-                    "something",
-                    "something"
+                    "中国南方航空CZ3095"
                 ]
             },
             {
-                title:"bbbbbbb",
-                time:"11:00",
+                title:"到达桃园机场",
+                time:"17:00",
                 list:[
-                    "something",
-                    "something"
+                    "取钱、wifi",
+                    "电话卡、悠游卡"
+                ]
+            },
+            {
+                title:"捷运到台北，找旅店",
+                time:"18:00",
+                list:[
+                    "信星青年旅馆 - 台北车站",
+                    "华阴街50号4楼, 大同区, 103",
+                    "(电话: +886225562015)",
+                    "订单编号: 1498293703 密码: 9756"
+                ]
+            },{
+                title:"自由活动",
+                list:[
+                    "附近超市",
+                    "夜市"
                 ]
             }
         ]
