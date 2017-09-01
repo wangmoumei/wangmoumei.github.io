@@ -101,7 +101,7 @@ window.scheduleData = [
                 ]
             },
             {
-                title:"肯定西线",
+                title:"垦丁西线",
                 list:[
                     "后壁湖",
                     "白沙湾"
