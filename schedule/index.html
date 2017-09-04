@@ -19,4 +19,19 @@
           }
       }
       return format;
-    }</script><link href=./static/css/app.a521a4bcf241c16a8698e1cfb8d4acc4.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./static/js/manifest.af80a35c1a9b5388771b.js></script><script type=text/javascript src=./static/js/vendor.9cd4e04a06a714f0d707.js></script><script type=text/javascript src=./static/js/app.68ebf64d93d989bdc250.js></script></body></html>
+    }
+  //自封装ajax
+  function MyAjax(url,data,callBack,error) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function (even) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+            callBack(xhr.responseText);
+        } else{
+          if(error && typeof error == "function")
+            error();
+        }
+    }
+    xhr.open("get", url , false);
+    xhr.send(data);
+  }
+  </script><link href=./static/css/app.9870e75fcb2215c9c8b30df630a9ca49.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./static/js/manifest.9a80eca78b31677b026a.js></script><script type=text/javascript src=./static/js/vendor.9cd4e04a06a714f0d707.js></script><script type=text/javascript src=./static/js/app.8826226d2f79e8a4a3b1.js></script></body></html>
