@@ -16,6 +16,7 @@ window.scheduleData = [
             {
                 title:"到达桃园机场",
                 time:"17:00",
+                location:"台北",
                 list:[
                     "取钱、wifi",
                     "电话卡、悠游卡"
@@ -150,9 +151,11 @@ window.scheduleData = [
         list:[
             {
                 title:"出发回台北",
-                time:"10:00",
+                time:"8:00",
                 list:[
-                    "左营 - 台北"
+                    "左營 08:55 - 台北 10:29",
+                    "车次：112  座位：5車14A",
+                    "訂位代碼：02679932"
                 ]
             },{
                 title:"从台北车站捷运到淡水 入住旅店",
