@@ -1,0 +1,488 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Animation动画</title>
+  <link rel="stylesheet" type="text/css" href="css/blog.css">
+  <link href="./highlight/styles/default.css" rel="stylesheet">
+  <link href="./highlight/styles/vs.css" rel="stylesheet">
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="./highlight/highlight.pack.js"></script>
+  <script src="./highlight/highlightjs-line-numbers.min.js"></script>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      color: #fff;
+      background: red;
+    }
+
+    .displat-table {
+      display: table;
+      width: 100%;
+      height: 100%;
+    }
+
+    .vertical-middle {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    code {
+      white-space: pre;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <table width=100%>
+      <tr>
+        <td>
+          <style>
+            #box1 {
+              /* transform:scale(0); */
+              visibility: hidden;
+              -webkit-animation: .5s FadeOut;
+              -moz-animation: .5s FadeOut;
+              animation: .5s FadeOut;
+            }
+
+            #box1.show {
+              /* transform:scale(1); */
+              visibility: visible;
+              -webkit-animation: 2s FadeIn;
+              -moz-animation: 2s FadeIn;
+              animation: 2s FadeIn;
+            }
+
+            #box1.hide {
+              -webkit-animation: .5s FadeOut;
+              -moz-animation: .5s FadeOut;
+              animation: .5s FadeOut;
+            }
+
+            @keyframes FadeIn {
+              0% {
+                opacity: 0;
+                /* transform: scale(0); */
+              }
+              100% {
+                opacity: 1;
+                /* transform: scale(1); */
+              }
+            }
+
+            @keyframes FadeOut {
+              0% {
+                opacity: 1;
+                /* transform: scale(1); */
+                visibility: visible;
+              }
+              100% {
+                opacity: 0;
+                /* transform: scale(0); */
+                visibility: hidden;
+              }
+            }
+          </style>
+          <div id="box1" class="box show">
+            <div class="displat-table">
+              <div class="vertical-middle">animation版</div>
+            </div>
+          </div>
+
+        </td>
+        <td>
+          <button id="btn1">click</button>
+          <script>
+            document.getElementById("btn1").onclick = function () {
+              var boxClassName = document.getElementById("box1").className;
+              if (boxClassName.indexOf("show") > -1) {
+                document.getElementById("box1").className = "box hide"
+              } else {
+                document.getElementById("box1").className = "box show"
+              }
+            }
+          </script>
+        </td>
+        <td>
+          <div id="cssCode1"></div>
+          <script>
+            document.getElementById("cssCode1").innerHTML = '<code class="hljs json">'
+              + hljs.highlight('css', `
+              #box1 {
+                visibility: hidden;
+              }
+              #box1.show {
+                -webkit-animation: 2s FadeIn;
+                -moz-animation: 2s FadeIn;
+                animation: 2s FadeIn;
+              }
+              #box1.hide {
+                visibility: visible;
+                -webkit-animation: .5s FadeOut;
+                -moz-animation: .5s FadeOut;
+                animation: .5s FadeOut;
+              }
+              @keyframes FadeIn {
+                0% {opacity: 0;}
+                100% {opacity: 1;}
+              }
+              @keyframes FadeOut {
+                0% {opacity: 1;visibility: visible;}
+                100% {opacity: 0;visibility: hidden;}
+              }`, true).value
+              + '</code>';
+          </script>
+        </td>
+        <td>
+          <div id="jsCode1"></div>
+          <script>
+            document.getElementById("jsCode1").innerHTML = '<code class="hljs js">'
+              + hljs.highlight('js', `
+              if (boxClassName.indexOf("show") > -1) {
+                document.getElementById("box1").className = "box hide"
+              } else {
+                document.getElementById("box1").className = "box show"
+              }`, true).value
+              + '</code>';
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <style>
+            #box2 {
+              visibility: hidden;
+              transition: all .5s ease-in;
+            }
+
+            #box2.show {
+              visibility: visible;
+              transition: all 2s ease-out;
+            }
+          </style>
+          <div id="box2" class="box show">
+            <div class="displat-table">
+              <div class="vertical-middle">transition版</div>
+            </div>
+          </div>
+
+        </td>
+        <td>
+          <button id="btn2">click</button>
+          <script>
+            document.getElementById("btn2").onclick = function () {
+              var boxClassName = document.getElementById("box2").className;
+              if (boxClassName.indexOf("show") > -1) {
+                document.getElementById("box2").className = "box";
+                document.getElementById("box2").style.opacity = 0;
+              } else {
+                document.getElementById("box2").className = "box show";
+                document.getElementById("box2").style.opacity = 1;
+              }
+            }
+          </script>
+        </td>
+        <td>
+          <div id="cssCode2"></div>
+          <script>
+            document.getElementById("cssCode2").innerHTML = '<code class="hljs json">'
+              + hljs.highlight('css', `
+                #box2 {
+                  transition: all .5s ease-in;
+                }
+                #box2.show {
+                  transition: all 2s ease-out;
+                }`, true).value
+              + '</code>';
+          </script>
+        </td>
+        <td>
+          <div id="jsCode2"></div>
+          <script>
+            document.getElementById("jsCode2").innerHTML = '<code class="hljs js">'
+              + hljs.highlight('js', `
+                document.getElementById("box2").className = "box show";
+                document.getElementById("box2").style.opacity = 1;`,
+                true).value
+              + '</code>';
+          </script>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <style>
+            #box3 {
+              display: none;
+            }
+
+            #box3.show {
+              display: block;
+            }
+          </style>
+          <div id="box3" class="box show">
+            <div class="displat-table">
+              <div class="vertical-middle">js版</div>
+            </div>
+          </div>
+
+        </td>
+        <td>
+          <button id="btn3">click</button>
+          <script>
+            var box3 = document.getElementById("box3");
+            var timer;
+            document.getElementById("btn3").onclick = function () {
+              var boxClassName = box3.className;
+              if (boxClassName.indexOf("show") > -1) {
+                if (timer) clearInterval(timer)
+                timer = fx(100, 0, function (x) { box3.style.opacity = x / 100; }, function () {
+                  box3.className = "box";
+                }, 500, 3)
+              } else {
+                box3.className = "box show";
+                if (timer) clearInterval(timer)
+                timer = fx(0, 100, function (x) { box3.style.opacity = x / 100; }, function () { }, 1500, .9)
+              }
+            }
+            function fx(f, t, fn, end, tm, pow) {
+              var D = Date;
+              var d = new D;
+              var e;
+              var c = tm || 240;
+              var pow = pow || 2;
+              return e = setInterval(function () {
+                var z = Math.min(1, (new D - d) / c);
+                (false === fn(+f + (t - f) * Math.pow(z, pow), z) || z == 1) && end && end(clearInterval(e));
+              }, 10);
+            }
+          </script>
+        </td>
+        <td>
+          <div id="cssCode3"></div>
+          <script>
+            document.getElementById("cssCode3").innerHTML = '<code class="hljs json">'
+              + hljs.highlight('css', `
+                #box3 {
+                  display: none;
+                }
+                #box3.show{
+                  display: block;
+                }`, true).value
+              + '</code>';
+          </script>
+        </td>
+        <td>
+          <div id="jsCode3"></div>
+          <script>
+            document.getElementById("jsCode3").innerHTML = '<code class="hljs js">'
+              + hljs.highlight('js', `
+                var boxClassName = box3.className;
+                if (boxClassName.indexOf("show") > -1) {
+                  if(timer) clearInterval(timer)
+                  timer = fx(100, 0, function (x) { box3.style.opacity = x / 100; }, function () {
+                    box3.className = "box";
+                  }, 500, .3)
+                } else {
+                  box3.className = "box show";
+                  if(timer) clearInterval(timer)
+                  timer = fx(0, 100, function (x) { box3.style.opacity = x / 100; }, function () { }, 1500, .9)
+                }
+                `, true).value
+              + '</code>';
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <style>
+            #box4 {}
+          </style>
+          <div id="box4" class="box">
+            <div class="displat-table">
+              <div class="vertical-middle">jq版</div>
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <button id="btn4">click</button>
+          <script>
+            document.getElementById("btn4").onclick = function () {
+              $("#box4").fadeToggle();
+            }
+          </script>
+        </td>
+        <td>
+          <div id="cssCode4"></div>
+          <script>
+            document.getElementById("cssCode4").innerHTML = '<code class="hljs json">'
+              + hljs.highlight('css', `
+                    #box4 {
+                    }`, true).value
+              + '</code>';
+          </script>
+        </td>
+        <td>
+          <div id="jsCode4"></div>
+          <script>
+            document.getElementById("jsCode4").innerHTML = '<code class="hljs js">'
+              + hljs.highlight('js', `
+                $("#box4").fadeToggle();`, true).value
+              + '</code>';
+          </script>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <style>
+    .card {
+      color: #fff;
+      background: red;
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      animation-duration: .5s;
+      animation-iteration-count: infinite;
+    }
+
+    .card1 {
+      float: left;
+
+    }
+
+    .card2 {
+      float: left;
+    }
+
+    .card3 {
+      clear: left;
+      float: left;
+    }
+
+    .card4 {
+      float: left;
+    }
+
+    .animated .card1 {
+      animation-name: Twinkle1;
+    }
+
+    .animated .card2 {
+      animation-name: Twinkle4;
+    }
+
+    .animated .card3 {
+      animation-name: Twinkle2;
+    }
+
+    .animated .card4 {
+      animation-name: Twinkle3;
+    }
+
+    @keyframes Twinkle1 {
+      0% {
+        background: red;
+      }
+      25% {
+        background: yellow;
+      }
+      50% {
+        background: red;
+      }
+      75% {
+        background: red;
+      }
+      100% {
+        background: red;
+      }
+    }
+
+    @keyframes Twinkle2 {
+      0% {
+        background: red;
+      }
+      25% {
+        background: red;
+      }
+      50% {
+        background: yellow;
+      }
+      75% {
+        background: red;
+      }
+      100% {
+        background: red;
+      }
+    }
+
+    @keyframes Twinkle3 {
+      0% {
+        background: red;
+      }
+      25% {
+        background: red;
+      }
+      50% {
+        background: red;
+      }
+      75% {
+        background: yellow;
+      }
+      100% {
+        background: red;
+      }
+    }
+
+    @keyframes Twinkle4 {
+      0% {
+        background: red;
+      }
+      25% {
+        background: red;
+      }
+      50% {
+        background: red;
+      }
+      75% {
+        background: red;
+      }
+      100% {
+        background: yellow;
+      }
+    }
+  </style>
+  <div id="animateBox">
+    <div class="card card1"></div>
+    <div class="card card2"></div>
+    <div class="card card3"></div>
+    <div class="card card4"></div>
+  </div>
+  <button id="animateCtrl">start</button>
+  <script>
+            document.getElementById("animateCtrl").onclick = function () {
+              fx(1, 10, function (x) { 
+                var cards = document.getElementById("animateBox").getElementsByTagName("div");
+                cards[0].style.animationDuration = x / 10 + "s";
+                cards[1].style.animationDuration = x / 10 + "s";
+                cards[2].style.animationDuration = x / 10 + "s";
+                cards[3].style.animationDuration = x / 10 + "s";
+              }, function () {
+                document.getElementById("animateBox").className = "";
+              }, 5000, .4)
+              document.getElementById("animateBox").className = "animated";
+            }
+  </script>
+</body>
+
+</html>
