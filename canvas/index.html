@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Text Canvas</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #countainer{
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .input-rows{
+      display: flex;
+      margin: 10px;
+    }
+    .input-rows .input-label{
+      font-size: 14px;
+      width: 140px;
+    }
+    .input-rows .input-box{
+      flex: 1;
+      text-align: right;
+    }
+    .input-rows .input-box input,
+    .input-rows .input-box textarea{
+      border:1px solid #ccc;
+    }
+    .input-rows .input-box input{
+      width: 100px;
+      padding: 3px 5px;
+    }
+    .input-rows .input-box textarea{
+      width: 100%;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="countainer">
+    <div>
+        <canvas id="myCanvas" width="300" height="300"/>
+    </div>
+    <div class="input-rows">
+        <div class="input-label">Text:</div>
+        <div class="input-box"><textarea id="myInput">哈哈哈哈</textarea></div>
+    </div>
+    <div class="input-rows">
+        <div class="input-label">Font Size:</div>
+        <div class="input-box"><input id="fontSize" value="15" />px</div>
+    </div>
+    <div class="input-rows">
+        <div class="input-label">Font Color:</div>
+        <div class="input-box">#<input id="fontColor" value="ffffff" /></div>
+    </div>
+    <div class="input-rows">
+        <div class="input-label">Background Color:</div>
+        <div class="input-box">#<input id="bgColor" value="cccccc" /></div>
+    </div>
+  </div>
+  <script>
+    var box = document.getElementById("countainer");
+    var width = box.clientWidth;
+    var myInput = document.getElementById("myInput");
+    var fontSize = document.getElementById("fontSize");
+    var fontColor = document.getElementById("fontColor");
+    var bgColor = document.getElementById("bgColor");
+    
+    var setting = {
+      width:width,
+      height:width,
+      text:myInput.value.replace(/\r\n/g, '^p').replace(/\n/g, '^p').split("^p"),
+      fontSize:fontSize.value,
+      fontColor:"#" + fontColor.value,
+      bgColor:"#" + bgColor.value
+    }
+
+    myInput.addEventListener("keyup",function(event){
+      setting.text = myInput.value.replace(/\r\n/g, '^p').replace(/\n/g, '^p').split("^p");
+      render();
+    })
+    fontSize.addEventListener("keyup",function(event){
+      setting.fontSize = fontSize.value;
+      render();
+    })
+    fontColor.addEventListener("keyup",function(event){
+      setting.fontColor = "#" + fontColor.value;
+      render();
+    })
+    bgColor.addEventListener("keyup",function(event){
+      setting.bgColor = "#" + bgColor.value;
+      render();
+    })
+    var myCanvas = document.getElementById("myCanvas");
+    myCanvas.width = setting.width;
+    myCanvas.height = setting.height;
+    var ctx=myCanvas.getContext('2d');
+
+    function render(){
+      var txtHeight = 50 +  (setting.text.length-1)* (parseFloat(setting.fontSize) + 5)
+      console.log(txtHeight + "||" + setting.height)
+      if( txtHeight > setting.height-50){
+        setting.height = txtHeight + 50;
+        myCanvas.height = setting.height;        
+      }
+
+      ctx.fillStyle=setting.bgColor;
+      ctx.fillRect(0,0,setting.width,setting.height);
+
+      ctx.fillStyle=setting.fontColor;    
+      ctx.font=setting.fontSize + "px sans-serif";
+      for(var i=0;i<setting.text.length;i++){
+        ctx.fillText(setting.text[i],10,50 + i * (parseFloat(setting.fontSize) + 5));
+      }
+
+      
+    }
+    render();
+  </script>
+</body>
+</html>
