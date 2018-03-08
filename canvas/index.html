@@ -1,64 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>Text Canvas</title>
   <style>
-    *{
+    * {
       margin: 0;
       padding: 0;
     }
-    #countainer{
+
+    #countainer {
       max-width: 600px;
       margin: 0 auto;
     }
-    .input-rows{
+
+    .canvas-wrapper {
+      position: relative;
+    }
+
+    .subline {
+      position: absolute;
+      border-color: #fff;
+      border-width: 1px;
+      display: none;
+    }
+
+    #lineTop,
+    #lineBottom {
+      border-top-style: solid;
+      height: 1px;
+      width: 100%;
+      left: 0;
+    }
+
+    #lineLeft,
+    #lineRight {
+      border-left-style: solid;
+      height: 100%;
+      width: 1px;
+      top: 0;
+    }
+
+    .input-rows {
       display: flex;
       margin: 10px;
     }
-    .input-rows .input-label{
+
+    .input-rows .input-label {
       font-size: 14px;
-      width: 140px;
+      width: 150px;
     }
-    .input-rows .input-box{
+
+    .input-rows .input-box {
       flex: 1;
       text-align: right;
     }
-    .input-rows .input-box input,
-    .input-rows .input-box textarea{
-      border:1px solid #ccc;
+
+    .input-rows .input-box input[type=text],
+    .input-rows .input-box textarea {
+      border: 1px solid #ccc;
     }
-    .input-rows .input-box input{
-      width: 100px;
+
+    .input-rows .input-box input[type=text] {
+      width: 50px;
       padding: 3px 5px;
     }
-    .input-rows .input-box textarea{
+
+    .input-rows .input-box textarea {
       width: 100%;
       height: 100px;
     }
+
+    #palette {
+      display: none;
+      color: #fff;
+    }
+
+    #palette li {
+      display: flex;
+    }
+
+    #palette li div {
+      flex: 1;
+      padding: 4px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+    #palette li div::before{
+      content: "#";
+    }
   </style>
 </head>
+
 <body>
   <div id="countainer">
-    <div>
-        <canvas id="myCanvas" width="300" height="300"/>
+    <div class="canvas-wrapper">
+      <canvas id="myCanvas" width="300" height="300"></canvas>
+      <div class="subline" id="lineTop"></div>
+      <div class="subline" id="lineBottom"></div>
+      <div class="subline" id="lineLeft"></div>
+      <div class="subline" id="lineRight"></div>
+      <ul id="palette" cellpadding="0" cellspacing="0">
+        <li>
+          <div style="background:#1bbc9d">1bbc9d</div>
+          <div style="background:#2fcc71">2fcc71</div>
+          <div style="background:#3598dc">3598dc</div>
+          <div style="background:#9c59b8">9c59b8</div>
+          <div style="background:#34495e">34495e</div>
+        </li>
+        <li>
+          <div style="background:#16a086">16a086</div>
+          <div style="background:#27ae61">27ae61</div>
+          <div style="background:#2a80b9">2a80b9</div>
+          <div style="background:#8f44ad">8f44ad</div>
+          <div style="background:#2d3e50">2d3e50</div>
+        </li>
+        <li>
+          <div style="background:#f1c40f">f1c40f</div>
+          <div style="background:#e77e23">e77e23</div>
+          <div style="background:#e84c3d">e84c3d</div>
+          <div style="background:#ecf0f1">ecf0f1</div>
+          <div style="background:#96a6a6">96a6a6</div>
+        </li>
+        <li>
+          <div style="background:#f49c14">f49c14</div>
+          <div style="background:#d55401">d55401</div>
+          <div style="background:#c1392b">c1392b</div>
+          <div style="background:#bec3c7">bec3c7</div>
+          <div style="background:#808b8d">808b8d</div>
+        </li>
+        <li>
+          <div style="background:#56eed9">56eed9</div>
+          <div style="background:#74f1e1">74f1e1</div>
+          <div style="background:#56eed9">56eed9</div>
+          <div style="background:#3addc8">3addc8</div>
+          <div style="background:#28cbb6">28cbb6</div>
+        </li>
+        <li>
+          <div style="background:#1fbba6">1fbba6</div>
+          <div style="background:#199482">199482</div>
+          <div style="background:#54d5eb">54d5eb</div>
+          <div style="background:#f9aa33">f9aa33</div>
+          <div style="background:#f75455">f75455</div>
+        </li>
+      </ul>
     </div>
     <div class="input-rows">
-        <div class="input-label">Text:</div>
-        <div class="input-box"><textarea id="myInput">哈哈哈哈</textarea></div>
+      <div class="input-label">Text:</div>
+      <div class="input-box">
+        <textarea id="myInput">遇见你真高兴。</textarea>
+      </div>
     </div>
     <div class="input-rows">
-        <div class="input-label">Font Size:</div>
-        <div class="input-box"><input id="fontSize" value="15" />px</div>
+      <div class="input-label">Font Size:</div>
+      <div class="input-box">
+        <input id="fontSize" value="15" type="text" />px</div>
     </div>
     <div class="input-rows">
-        <div class="input-label">Font Color:</div>
-        <div class="input-box">#<input id="fontColor" value="ffffff" /></div>
+      <div class="input-label">Font Color:</div>
+      <div class="input-box">#
+        <input id="fontColor" value="ecf0f1" type="text" />
+        <br>
+        <label for="showFC">palette</label>
+        <input type="checkbox" name="showFC" id="showFC" />
+      </div>
     </div>
     <div class="input-rows">
-        <div class="input-label">Background Color:</div>
-        <div class="input-box">#<input id="bgColor" value="cccccc" /></div>
+      <div class="input-label">Background Color:</div>
+      <div class="input-box">#
+        <input id="bgColor" value="1bbc9d" type="text" />
+        <br>
+        <label for="showBGC">palette</label>
+        <input type="checkbox" name="showBGC" id="showBGC" />
+      </div>
+    </div>
+    <div class="input-rows">
+      <div class="input-label">Padding Top&Bottom:</div>
+      <div class="input-box">
+        <input id="paddingTB" value="150" type="text" />px
+        <br>
+        <label for="showTB">subline</label>
+        <input type="checkbox" name="showTB" id="showTB" />
+      </div>
+    </div>
+    <div class="input-rows">
+      <div class="input-label">Padding Left&Right:</div>
+      <div class="input-box">
+        <input id="paddingLR" value="100" type="text" />px
+        <br>
+        <label for="showLR">subline</label>
+        <input type="checkbox" name="showLR" id="showLR" />
+      </div>
+    </div>
+    <div class="input-rows">
+      <div class="input-label">Line Height:</div>
+      <div class="input-box">
+        <input id="lineHeight" value="5" type="text" />px</div>
     </div>
   </div>
   <script>
@@ -67,58 +206,122 @@
     var myInput = document.getElementById("myInput");
     var fontSize = document.getElementById("fontSize");
     var fontColor = document.getElementById("fontColor");
+    var showFC = document.getElementById("showFC");
     var bgColor = document.getElementById("bgColor");
-    
+    var showBGC = document.getElementById("showBGC");
+    var paddingTB = document.getElementById("paddingTB");
+    var paddingLR = document.getElementById("paddingLR");
+    var lineHeight = document.getElementById("lineHeight");
+    var showTB = document.getElementById("showTB");
+    var lineTop = document.getElementById("lineTop");
+    var lineBottom = document.getElementById("lineBottom");
+    var showLR = document.getElementById("showLR");
+    var lineLeft = document.getElementById("lineLeft");
+    var lineRight = document.getElementById("lineRight");
+    var palette = document.getElementById("palette");
+
     var setting = {
-      width:width,
-      height:width,
-      text:myInput.value.replace(/\r\n/g, '^p').replace(/\n/g, '^p').split("^p"),
-      fontSize:fontSize.value,
-      fontColor:"#" + fontColor.value,
-      bgColor:"#" + bgColor.value
+      width: width * 2,
+      height: width * 2,
+      text: myInput.value.replace(/\r\n/g, '^p').replace(/\n/g, '^p').split("^p"),
+      fontSize: parseFloat(fontSize.value) * 2,
+      paddingTB: parseFloat(paddingTB.value) * 2,
+      paddingLR: parseFloat(paddingLR.value) * 2,
+      lineHeight: parseFloat(lineHeight.value) * 2,
+      fontColor: "#" + fontColor.value,
+      bgColor: "#" + bgColor.value,
     }
 
-    myInput.addEventListener("keyup",function(event){
+    myInput.addEventListener("keyup", function (event) {
       setting.text = myInput.value.replace(/\r\n/g, '^p').replace(/\n/g, '^p').split("^p");
       render();
     })
-    fontSize.addEventListener("keyup",function(event){
-      setting.fontSize = fontSize.value;
+    fontSize.addEventListener("keyup", function (event) {
+      setting.fontSize = parseFloat(fontSize.value) * 2;
       render();
     })
-    fontColor.addEventListener("keyup",function(event){
+    paddingTB.addEventListener("keyup", function (event) {
+      setting.paddingTB = parseFloat(paddingTB.value) * 2;
+      render();
+    })
+    paddingLR.addEventListener("keyup", function (event) {
+      setting.paddingLR = parseFloat(paddingLR.value) * 2;
+      render();
+    })
+    lineHeight.addEventListener("keyup", function (event) {
+      setting.lineHeight = parseFloat(lineHeight.value) * 2;
+      render();
+    })
+    fontColor.addEventListener("keyup", function (event) {
       setting.fontColor = "#" + fontColor.value;
       render();
     })
-    bgColor.addEventListener("keyup",function(event){
+    bgColor.addEventListener("keyup", function (event) {
       setting.bgColor = "#" + bgColor.value;
       render();
     })
+    showTB.addEventListener("change", function (event) {
+      lineTop.style.display = showTB.checked ? "block" : "none"
+      lineBottom.style.display = showTB.checked ? "block" : "none"
+      lineTop.style.top = paddingTB.value + "px"
+      lineBottom.style.bottom = paddingTB.value + "px"
+    })
+    showLR.addEventListener("change", function (event) {
+      lineLeft.style.display = showLR.checked ? "block" : "none"
+      lineRight.style.display = showLR.checked ? "block" : "none"
+      lineLeft.style.left = paddingLR.value + "px"
+      lineRight.style.right = paddingLR.value + "px"
+    })
+    showFC.addEventListener("change", function (event) {
+      palette.style.display = showFC.checked ? "block" : "none"
+      showBGC.checked = false;
+
+    })
+    showBGC.addEventListener("change", function (event) {
+      palette.style.display = showBGC.checked ? "block" : "none"
+      showFC.checked = false;
+    })
+    palette.addEventListener("click", function (event) {
+      // console.log(event.target.style.background)
+      if(showFC.checked){
+        setting.fontColor = "#" + event.target.innerHTML
+        fontColor.value = event.target.innerHTML
+      }else if(showBGC.checked){
+        setting.bgColor = "#" + event.target.innerHTML
+        bgColor.value = event.target.innerHTML
+      }
+      render();
+      
+    })
     var myCanvas = document.getElementById("myCanvas");
     myCanvas.width = setting.width;
+    myCanvas.style.width = setting.width / 2 + "px"
     myCanvas.height = setting.height;
-    var ctx=myCanvas.getContext('2d');
+    myCanvas.style.height = setting.height / 2 + "px";
 
-    function render(){
-      var txtHeight = 50 +  (setting.text.length-1)* (parseFloat(setting.fontSize) + 5)
-      console.log(txtHeight + "||" + setting.height)
-      if( txtHeight > setting.height-50){
-        setting.height = txtHeight + 50;
-        myCanvas.height = setting.height;        
+    var ctx = myCanvas.getContext('2d');
+
+    function render() {
+      var txtHeight = setting.paddingTB + (setting.text.length) * ((setting.fontSize) + setting.lineHeight)
+      // console.log(txtHeight + "||" + setting.height)
+      if (txtHeight > setting.height - setting.paddingTB || (setting.height > setting.width && txtHeight < setting.height - setting.paddingTB)) {
+        setting.height = txtHeight + setting.paddingTB;
+        setting.height = setting.height < setting.width ? setting.width : setting.height;
+        myCanvas.height = setting.height;
+        myCanvas.style.height = setting.height / 2 + "px";
       }
 
-      ctx.fillStyle=setting.bgColor;
-      ctx.fillRect(0,0,setting.width,setting.height);
+      ctx.fillStyle = setting.bgColor;
+      ctx.fillRect(0, 0, setting.width, setting.height);
 
-      ctx.fillStyle=setting.fontColor;    
-      ctx.font=setting.fontSize + "px sans-serif";
-      for(var i=0;i<setting.text.length;i++){
-        ctx.fillText(setting.text[i],10,50 + i * (parseFloat(setting.fontSize) + 5));
+      ctx.fillStyle = setting.fontColor;
+      ctx.font = setting.fontSize + "px sans-serif";
+      for (var i = 0; i < setting.text.length; i++) {
+        ctx.fillText(setting.text[i], setting.paddingLR, setting.paddingTB + (i + 1) * ((setting.fontSize) + setting.lineHeight));
       }
-
-      
     }
     render();
   </script>
 </body>
+
 </html>
