@@ -12,6 +12,34 @@
 <div class="main">
 <pre>
 0. 常用css汇总
+垂直居中：
+	width 100%
+	height 100%
+	display table
+	
+	display table-cell
+	vertical-align middle
+fadeIn动画
+show：
+visibility visible
+opacity 1
+transition opacity .2s
+hide：
+visibility hidden
+opacity 0
+transition visibility 0s .2s, opacity .2s
+栅格模型：
+display: flex;
+align-items:flex-start | center | flex-end;
+flex-direction:column;
+justify-content:flex-start | center | flex-end;
+文本overflow显示...：
+overflow hidden
+display -webkit-box
+-webkit-box-orient vertical
+-webkit-line-clamp 2
+text-overflow ellipsis
+white-space normal
 全局字体设置：font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 去掉手机浏览器触摸高亮区 ：
   *:focus{
